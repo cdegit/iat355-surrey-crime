@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7317613, 49.1187066, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8679716, 49.1498246, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8512812, 49.1790502, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8343838, 49.0458405, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7795717, 49.1987648, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.842645, 49.1240752, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8762927, 49.15198789999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8673336, 49.20625219999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8084528, 49.0575438, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7554799, 49.1188365, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7134178, 49.0567228, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8507742, 49.19625449999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6935226, 49.1352164, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8765139, 49.17626139999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6854999, 49.1071433, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.88376, 49.1920546, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8882097, 49.1340236, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.86182, 49.17193409999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8647133, 49.1815745, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8845745, 49.1411214, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8680131, 49.1738824, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7731887, 49.1664662, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7309685, 49.1114176, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7727318, 49.1115906, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8177885, 49.1112428, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8123561, 49.157863, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7126748, 49.1076734, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7256322, 49.1022659, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8537846, 49.1989099, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8880637, 49.1400961, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8147626, 49.1190688, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.782105, 49.1584922, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7898059, 49.1482396, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8361369, 49.1629356, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8582444, 49.1736182, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7951089, 49.2023868, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8313519, 49.1914807, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7817068, 49.1637601, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8568273, 49.1752579, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.843092, 49.0450627, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8064165, 49.186129, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8736439, 49.17183499999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8681309, 49.1771622, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8257964, 49.20067599999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8397104, 49.1915, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7016712, 49.1297112, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8205255, 49.1409859, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8592498, 49.12218739999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8679042, 49.1446356, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7802356, 49.20246419999999, 0</coordinates>
+</Point>
+</Placemark>
+
+</Document></kml>
