@@ -12,19 +12,35 @@ var geocodedAddresses = [];
 
 var geoIndex = 0;
 
-fs.readFile("crime2014.csv", "utf8", function(err, data) {
+// fs.readFile("crime2014.csv", "utf8", function(err, data) {
+// 	data = data.split("\n");
+
+// 	data.forEach(function(line, index, arr) {
+// 		if (line !== "" && index !== 0) {
+// 			var splitLine = line.split(",");
+
+// 			if (splitLine[1] !== "") {
+// 				addresses.push( splitLine[1] + " " + splitLine[2].trim() + ", Surrey, BC");
+// 			} else {
+// 				// ugh
+// 				addresses.push(splitLine[2].split(" /").join().trim() + ", Surrey, BC");
+// 			}
+// 		}
+// 	});
+
+// 	addresses = addresses.slice(0, 50)
+// 	console.log(addresses)
+
+// 	geocoder.geocode(addresses[geoIndex], fetchNextAddress);
+// });
+
+fs.readFile("data/crime2013.csv", "utf8", function(err, data) {
 	data = data.split("\n");
 
 	data.forEach(function(line, index, arr) {
 		if (line !== "" && index !== 0) {
 			var splitLine = line.split(",");
-
-			if (splitLine[1] !== "") {
-				addresses.push( splitLine[1] + " " + splitLine[2].trim() + ", Surrey, BC");
-			} else {
-				// ugh
-				addresses.push(splitLine[2].split(" /").join().trim() + ", Surrey, BC");
-			}
+			addresses.push(splitLine[1] + ", Surrey, BC");
 		}
 	});
 
@@ -61,7 +77,7 @@ function fetchNextAddress(err, res) {
 // in theory don't need that CSV. in theory...
 
 function writeKML() {
-	var stream = fs.createWriteStream("crime2014.kml");
+	var stream = fs.createWriteStream("data/crime2013.kml");
 	stream.write('<?xml version="1.0" encoding="UTF-8"?>');
 	stream.write('<kml xmlns="http://www.opengis.net/kml/2.2">');
 	stream.write('<Document>');

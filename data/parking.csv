@@ -1,0 +1,83 @@
+ZONE_NO,ZONE_NAME,METER_NAME,METER_ID,METER_TYPE,METER_MODEL,TIME_OPEN,TIME_CLOSED,DAYS,RATE_HOUR,MAX_HOUR,RATE_DAILY,RATE_UNRESERVED,RATE_RESERVED,RATE_OTHER,OWNER,ON_OFF_STREET,ADDRESS,PAYMENT_METHODS,COMMENTS,Latitude,Longitude
+,Central City SkyTrain,,#208,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,10275 City Parkway,Credit Card/PayByPhone,,49.189714,-122.847952
+,Central City SkyTrain,,#209,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,10275 City Parkway,Credit Card/PayByPhone,,49.189756,-122.847952
+,Central City SkyTrain,,#210,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,10275 City Parkway,Credit Card/PayByPhone,,49.189788,-122.848319
+,Central City SkyTrain,,#213,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,10275 City Parkway,Credit Card/PayByPhone,,49.189802,-122.848319
+,City Centre Library,,#201,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,10281 University Dr,Credit Card/PayByPhone,,49.189576,-122.850236
+,Eye Care Centre,,#205,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,13450 104 Ave,Credit Card/PayByPhone,,49.191260,-122.848020
+,Eye Care Centre,,#206,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,13450 104 Ave,Credit Card/PayByPhone,,49.191260,-122.847966
+,Eye Care Centre,,#207,Single-Space Meter,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,Off,13450 104 Ave,Credit Card/PayByPhone,,49.191260,-122.847905
+,Gateway,,#047,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13555 Gateway Dr,Cash/Credit Card/PayByPhone,,49.201628,-122.849811
+,Gateway,,#001,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13433 Gateway Dr,Cash/Credit Card/PayByPhone,,49.201033,-122.850497
+,Gateway,,#002,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13468 Gateway Dr,Cash/Credit Card/PayByPhone,,49.201032,-122.849818
+,Gateway,,#003,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13450 Gateway Dr,Cash/Credit Card/PayByPhone,,49.200588,-122.850466
+,Gateway,,#004,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13450 Gateway Dr,Cash/Credit Card/PayByPhone,,49.200508,-122.849673
+,Gateway,,#005,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,10866 City Parkway,Cash/Credit Card/PayByPhone,,49.200285,-122.849030
+,Gateway,,#006,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13479 108 Ave,Cash/Credit Card/PayByPhone,,49.199911,-122.848980
+,Gateway,,#007,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,10822 City Parkway,Cash/Credit Card/PayByPhone,,49.199558,-122.848684
+,Gateway,,#008,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13479 108 Ave,Cash/Credit Card/PayByPhone,,49.199228,-122.848916
+,Gateway,,#009,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13401 108 Ave,Cash/Credit Card/PayByPhone,,49.199027,-122.849669
+,Gateway South,,#014,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13456 108 Ave,Cash/Credit Card/PayByPhone,,49.198468,-122.848908
+,Gateway South,,#015,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13455 107A Ave,Cash/Credit Card/PayByPhone,,49.197654,-122.848937
+,Gateway South,,#016,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13425 107A Ave,Cash/Credit Card/PayByPhone,,49.197468,-122.849999
+,Gateway South,,#017,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13458 107A Ave,Cash/Credit Card/PayByPhone,,49.197322,-122.849543
+,Gateway South,,#018,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13458 107A Ave,Cash/Credit Card/PayByPhone,,49.197012,-122.848930
+,Hospital South,,#011,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13665 138 St,Cash/Credit Card/PayByPhone,,49.175418,-122.840093
+,Hospital South,,#012,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13665 94A Ave,Cash/Credit Card/PayByPhone,,49.174768,-122.843432
+,Hospital South,,#013,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13665 94A Ave,Cash/Credit Card/PayByPhone,,49.174773,-122.841896
+,Hospital North,,#054,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9650 137A St,Cash/Credit Card/PayByPhone,,49.177939,-122.841006
+,Marine Drive,,#020,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016517,-122.789434
+,Marine Drive,,#021,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016508,-122.788089
+,Marine Drive,,#022,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016507,-122.786942
+,Marine Drive,,#023,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016506,-122.783588
+,Marine Drive,,#024,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016507,-122.781622
+,17 Avenue,,#019,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,1688 17 Ave,Cash/Credit Card/PayByPhone,,49.032889,-122.800620
+,Surrey Nature Centre,,,,,,,,,,,,,,Surrey,Off,14225 Green Timbers Way,Credit Card/PAP/Invoice,Monthly Parking Only,49.181026,-122.832872
+,Marine Drive,,#025,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,15638 8 Ave,Cash/Credit Card/PayByPhone,,49.016504,-122.780128
+,Hospital North,,#039,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9770 King George Blvd,Cash/Credit Card/PayByPhone,,49.179303,-122.845253
+,Hospital North,,#040,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9711 137 St,Cash/Credit Card/PayByPhone,,49.179199,-122.843456
+,Hospital North,,#041,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9666 King George Blvd,Cash/Credit Card/PayByPhone,,49.178773,-122.844177
+,Hospital North,,#042,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9677 137 St,Cash/Credit Card/PayByPhone,,49.178358,-122.844021
+,Hospital North,,#043,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9632 137 St,Cash/Credit Card/PayByPhone,,49.177505,-122.844087
+,Hospital North,,#046,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9688 137A St,Cash/Credit Card/PayByPhone,,49.178276,-122.841933
+,Hospital North,,#048,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9650 137A St,Cash/Credit Card/PayByPhone,,49.177748,-122.841987
+,Hospital North,,#050,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9645 137 St,Cash/Credit Card/PayByPhone,,49.177859,-122.843440
+,Hospital North,,#051,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9639 137A St,Cash/Credit Card/PayByPhone,,49.178150,-122.843202
+,Hospital North,,#052,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,9639 137A St,Cash/Credit Card/PayByPhone,,49.178109,-122.842142
+,Hospital North,,#053,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13737 96 Ave,Cash/Credit Card/PayByPhone,,49.177602,-122.842192
+,New City Hall Parkade,,#215,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#216,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,Green Timbers,,,,,,,,,,,,,,Surrey,Off,9800 140 St,Credit Card/PAP/Invoice,Monthly Parking Only,49.178945,-122.829726
+,New City Hall Parkade,,#217,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#218,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#219,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#214,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#220,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#221,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,New City Hall Parkade,,#222,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,Surrey Central,,#010,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,10388 City Parkway,Cash/Credit Card/PayByPhone,,49.190703,-122.847543
+,SFU North,,#202,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13433 102A Ave,Credit Card/PayByPhone,,49.188984,-122.850141
+,New City Hall Parkade,,#223,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,13450 104 Ave,Cash/Credit Card/PayByPhone,,49.190891,-122.848731
+,North Surrey Recreation Centre,,#204,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,10225 City Parkway,Credit Card/PayByPhone,,49.188645,-122.848082
+,SFU South,,#203,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,Off,10223 University Dr,Credit Card/PayByPhone,,49.188455,-122.850472
+,102 Avenue,,#062,Paystation,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,On,13450 102 Ave,Cash/Credit Card/PayByPhone,,49.188246,-122.849357
+,102 Avenue,,#063,Paystation,MACKAY SOLO SINGLE-SPACE,,,,,,,,,,Surrey,On,13450 102 Ave,Cash/Credit Card/PayByPhone,,49.188246,-122.849357
+,103 Avenue,,#061,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10388 City Parkway,Credit Card/PayByPhone,,49.190146,-122.846605
+,Scott Road SkyTrain On-Street,,#055,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,12515 110 Ave,Credit Card/PayByPhone,,49.202700,-122.874817
+,Scott Road SkyTrain On-Street,,#056,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,12515 110 Ave,Credit Card/PayByPhone,,49.202698,-122.873296
+,University Drive On-Street,,#058,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,13433 Gateway Dr,Credit Card/PayByPhone,,49.200693,-122.851779
+,Hospital South,,#049,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13665 138 St,Cash/Credit Card/PayByPhone,,49.176123,-122.840088
+,University Drive On-Street,,#060,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,13433 Gateway Dr,Credit Card/PayByPhone,,49.201333,-122.852172
+,University Drive On-Street,,#059,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10898 133A St,Credit Card/PayByPhone,,49.201363,-122.852513
+,University Drive On-Street,,#057,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10925 University Dr,Credit Card/PayByPhone,,49.200522,-122.851917
+,100 Avenue,,#044,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13720 100 Ave,Cash/Credit Card/PayByPhone,,49.184141,-122.841470
+,100 Avenue,,#045,Paystation,SIEMENS SITRAFFIC PRISMA,,,,,,,,,,Surrey,On,13778 100 Ave,Cash/Credit Card/PayByPhone,,49.184122,-122.840299
+,133/133A Street On-Street,,#065,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10335 133 St,Cash/Credit Card/PayByPhone,,49.190463,-122.854361
+,133/133A Street On-Street,,#066,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10290 133 St,Cash/Credit Card/PayByPhone,,49.189616,-122.854178
+,133/133A Street On-Street,,#069,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10364 133A St,Cash/Credit Card/PayByPhone,,49.190641,-122.851940
+,133/133A Street On-Street,,#068,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10297 133A St,Cash/Credit Card/PayByPhone,,49.189319,-122.852180
+,133/133A Street On-Street,,#067,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,13321 102A Ave,Cash/Credit Card/PayByPhone,,49.188924,-122.853150
+,105/105A Avenue On-Street,,#074,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,13430 105 Avenue,Cash/Credit Card/PayByPhone,,49.193066,-122.850180
+,105/105A Avenue On-Street,,#070,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,13461 105A Ave,Cash/Credit Card/PayByPhone,,49.194407,-122.850134
+,105/105A Avenue On-Street,,#072,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10519 134A St,Cash/Credit Card/PayByPhone,,49.193663,-122.849601
+,105/105A Avenue On-Street,,#073,Paystation,DIGITAL PAYMENT TECHNOLOGIES LUKE II,,,,,,,,,,Surrey,On,10492 134A St,Cash/Credit Card/PayByPhone,,49.193213,-122.849063
