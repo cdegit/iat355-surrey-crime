@@ -1,4 +1,25 @@
 #gMap {
-    width: 500px;
+	flex-grow: 1;
     height: 500px;
+	-webkit-transition: all 0.25s ease-in 0s;
+  	transition: flex-grow 0.25s ease-in 0s;
+  	will-change: flex-grow;
 }
+
+#chart {
+	-webkit-transition: all 0.25s ease-in 0s;
+  	transition: flex-grow 0.25s ease-in 0s;
+  	will-change: flex-grow;
+}
+
+.vis-content {
+	display: flex;
+}
+
+#resize-handle {
+	width: 20px;
+	background: #DDD;
+	cursor: e-resize;
+}
+
+/* use flex grow to work with handle??? */

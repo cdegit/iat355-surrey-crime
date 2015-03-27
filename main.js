@@ -1,12 +1,11 @@
+var mapProperties = {
+    center:new google.maps.LatLng(49.1833, -122.85),
+    zoom:11,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+var map = new google.maps.Map(document.getElementById("gMap"), mapProperties);
+
 function drawMap() {
-    var mapProperties = {
-        center:new google.maps.LatLng(49.1833, -122.85),
-        zoom:11,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("gMap"), mapProperties);
-
-
     // var marker=new google.maps.Marker({
     //     position: mapProperties.center,
     // });
@@ -25,7 +24,7 @@ function drawMap() {
 
     var ctaLayer = new google.maps.KmlLayer(
     {   
-        url: 'https://gist.githubusercontent.com/cdegit/429beb50906a82107f8a/raw/f2f9337df8ed45d12de7f848dec348c168301580/crime2014.kml',
+        url: 'https://raw.githubusercontent.com/cdegit/iat355-surrey-crime/master/data/crime2013.kml?token=ACubUusFqD6-hhwSkiukcGskxzP9qHoXks5VHkTlwA%3D%3D',
         preserveViewport: true,
         icon: goldStar
     });
@@ -57,3 +56,29 @@ function drawMap() {
 }
 
 $(drawMap)
+
+resizeVis(1, 1);
+
+d3.select("#resize-handle").on("dragend", function() {
+    var width = parseInt(d3.select(".vis-content").style("width")) - 20;
+
+    var graphWidth = width - d3.event.x;
+
+    if (graphWidth < 0) {
+        graphWidth = 0;
+    }
+
+    resizeVis(d3.event.x, graphWidth);
+});
+
+function resizeVis(mapSize, chartSize) {
+    d3.select("#gMap").style({"flex-grow": mapSize});
+    d3.select("#chart").style({"flex-grow": chartSize});
+
+    // wait for the animation to finish
+    setTimeout(function() {
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center); 
+    }, 300);
+}
