@@ -13,6 +13,9 @@ App.Views.parking = {
 	},
 	chart: {
 		data: {},
+		init: function() {
+
+		},
 		render: function() {
 			
 		},

@@ -13,8 +13,11 @@ App.Views.trafficCalming = {
 	},
 	chart: {
 		data: {},
+		init: function() {
+
+		},
 		render: function() {
-			
+
 		},
 		close: function() {
 			
