@@ -34,7 +34,7 @@ var geoIndex = 0;
 // 	geocoder.geocode(addresses[geoIndex], fetchNextAddress);
 // });
 
-fs.readFile("data/crime2013.csv", "utf8", function(err, data) {
+fs.readFile("data/random_crime2013.csv", "utf8", function(err, data) {
 	data = data.split("\n");
 
 	data.forEach(function(line, index, arr) {
@@ -49,7 +49,7 @@ fs.readFile("data/crime2013.csv", "utf8", function(err, data) {
 		}
 	});
 
-	addresses = addresses.slice(0, 100)
+	addresses = addresses.slice(0, 200)
 	console.log(addresses)
 
 	geocoder.geocode(addresses[geoIndex].addr, fetchNextAddress);
