@@ -18,14 +18,14 @@ App.resizeVis = function (mapSize, chartSize) {
 
 App.clearView = function() {
     if (App.currentView != null) {
-        App.currentView.chart.close();
-        App.currentView.map.kmlLayer.setMap(null);
+        App.currentView.chartClose();
+        App.currentView.mapClose();
     }
 }
 
 App.setView = function(view) {
     App.currentView = App.Views[view];
 
-    App.Views[view].map.kmlLayer.setMap(App.map);
-    App.Views[view].chart.render();
+    App.Views[view].mapRender();
+    App.Views[view].chartRender();
 }

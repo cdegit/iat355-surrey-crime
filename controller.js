@@ -17,7 +17,3 @@ d3.select("select").on("change", function() {
 
     App.setView(selected);
 });
-
-for (view in App.Views) {
-    google.maps.event.addListener(App.Views[view].map.kmlLayer, 'click', App.Views[view].map.clickCallback);
-}

@@ -1,26 +1,25 @@
-App.Views.trafficCalming = {
-	map: {
-		kmlLayer: new google.maps.KmlLayer(
-	    {   
-	        url: 'https://raw.githubusercontent.com/cdegit/iat355-surrey-crime/master/data/traffic_calming.kml?token=ACubUv1XPeOOPBAf0X4RC-pzc4Ki21xlks5VHlaVwA%3D%3D',
-	        preserveViewport: true,
-	        suppressInfoWindows: true,
-	        map: null
-	    }),
-		clickCallback: function() {
-			
-		}
-	},
-	chart: {
-		data: {},
-		init: function() {
+App.Views.trafficCalming = Object.create(App.BaseView);
 
-		},
-		render: function() {
+App.Views.trafficCalming.mapInit = function() {
 
-		},
-		close: function() {
-			
-		}
-	}
+};
+
+App.Views.trafficCalming.mapRender = function() {
+
+};
+
+App.Views.trafficCalming.mapClose = function() {
+
+};
+
+App.Views.trafficCalming.chartInit = function() {
+
+};
+
+App.Views.trafficCalming.chartRender = function() {
+
+};
+
+App.Views.trafficCalming.chartClose = function() {
+
 };

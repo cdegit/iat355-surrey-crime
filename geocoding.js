@@ -44,7 +44,7 @@ fs.readFile("data/crime2013.csv", "utf8", function(err, data) {
 		}
 	});
 
-	addresses = addresses.slice(0, 50)
+	addresses = addresses.slice(0, 100)
 	console.log(addresses)
 
 	geocoder.geocode(addresses[geoIndex], fetchNextAddress);
@@ -82,8 +82,11 @@ function writeKML() {
 	stream.write('<kml xmlns="http://www.opengis.net/kml/2.2">');
 	stream.write('<Document>');
 
+	writeIcons(stream);
+
 	geocodedAddresses.forEach(function(address, index, arr) {
 		stream.write('<Placemark>\n');
+		stream.write('<styleUrl>#type_breakAndEnter</styleUrl>');
 		stream.write('<name>Hello World</name>\n');
 		stream.write('<description>Desc</description>\n');
 		stream.write('<Point>\n');
@@ -95,4 +98,11 @@ function writeKML() {
 	stream.write('</Document>');
 	stream.write('</kml>');
 	stream.end();
+}
+
+function writeIcons(stream) {
+	stream.write('<Style id="type_breakAndEnter">');
+	stream.write('<IconStyle><Icon>');
+	stream.write('<href>' + 'https://raw.githubusercontent.com/cdegit/iat355-surrey-crime/master/assets/marker_blue.png?token=ACubUqY_cHn_3ml9qPvIa5ozxVw4NTbEks5VI1nZwA%3D%3D' + '</href>');
+	stream.write('</Icon></IconStyle></Style>\n');
 }

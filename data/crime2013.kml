@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><Placemark>
-<name>Hello World</name>
+<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><Style id="type_breakAndEnter"><IconStyle><Icon><href>https://raw.githubusercontent.com/cdegit/iat355-surrey-crime/master/assets/marker_blue.png?token=ACubUqY_cHn_3ml9qPvIa5ozxVw4NTbEks5VI1nZwA%3D%3D</href></Icon></IconStyle></Style>
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8011706, 49.0421267, 0</coordinates>
@@ -7,7 +8,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8762927, 49.15198789999999, 0</coordinates>
@@ -15,7 +16,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8485773, 49.14270010000001, 0</coordinates>
@@ -23,7 +24,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7969625, 49.1043219, 0</coordinates>
@@ -31,7 +32,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8009168, 49.0438854, 0</coordinates>
@@ -39,7 +40,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8902763, 49.1590299, 0</coordinates>
@@ -47,7 +48,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8288244, 49.1300337, 0</coordinates>
@@ -55,7 +56,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8038643, 49.1043744, 0</coordinates>
@@ -63,7 +64,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8566384, 49.1825718, 0</coordinates>
@@ -71,7 +72,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8453785, 49.1864879, 0</coordinates>
@@ -79,7 +80,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8010646, 49.05588030000001, 0</coordinates>
@@ -87,7 +88,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8510162, 49.1335606, 0</coordinates>
@@ -95,7 +96,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8838832, 49.2071626, 0</coordinates>
@@ -103,7 +104,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8480364, 49.2006114, 0</coordinates>
@@ -111,7 +112,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8418903, 49.189778, 0</coordinates>
@@ -119,7 +120,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8483614, 49.1370397, 0</coordinates>
@@ -127,7 +128,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8009168, 49.0438854, 0</coordinates>
@@ -135,7 +136,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8455173, 49.1265185, 0</coordinates>
@@ -143,7 +144,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8041887, 49.0541075, 0</coordinates>
@@ -151,7 +152,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8902699, 49.1771162, 0</coordinates>
@@ -159,7 +160,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8991299, 49.1843858, 0</coordinates>
@@ -167,7 +168,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7796528, 49.1987651, 0</coordinates>
@@ -175,7 +176,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.828812, 49.1279823, 0</coordinates>
@@ -183,7 +184,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8064165, 49.186129, 0</coordinates>
@@ -191,7 +192,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8175231, 49.196718, 0</coordinates>
@@ -199,7 +200,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8902359, 49.13889409999999, 0</coordinates>
@@ -207,7 +208,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7796528, 49.1987651, 0</coordinates>
@@ -215,7 +216,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8385377, 49.1299559, 0</coordinates>
@@ -223,7 +224,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.682943, 49.1152393, 0</coordinates>
@@ -231,15 +232,15 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
-<coordinates>-122.7376425, 49.1480477, 0</coordinates>
+<coordinates>-122.8325573, 49.14815549999999, 0</coordinates>
 </Point>
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7998304, 49.1573971, 0</coordinates>
@@ -247,7 +248,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.801384, 49.1661008, 0</coordinates>
@@ -255,7 +256,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8032233, 49.0347057, 0</coordinates>
@@ -263,7 +264,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8178793, 49.0652119, 0</coordinates>
@@ -271,7 +272,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7074484, 49.12591200000001, 0</coordinates>
@@ -279,7 +280,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8485773, 49.14270010000001, 0</coordinates>
@@ -287,15 +288,15 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
-<coordinates>-122.7788451, 49.1720242, 0</coordinates>
+<coordinates>-122.7789899, 49.096972, 0</coordinates>
 </Point>
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8858261, 49.1962106, 0</coordinates>
@@ -303,7 +304,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8454948, 49.1915487, 0</coordinates>
@@ -311,7 +312,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8622677, 49.1532245, 0</coordinates>
@@ -319,7 +320,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8388102, 49.18045799999999, 0</coordinates>
@@ -327,7 +328,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.685089, 49.1769805, 0</coordinates>
@@ -335,7 +336,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8455501, 49.1314618, 0</coordinates>
@@ -343,7 +344,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8371489, 49.1860252, 0</coordinates>
@@ -351,7 +352,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7458835, 49.176979, 0</coordinates>
@@ -359,7 +360,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8175231, 49.196718, 0</coordinates>
@@ -367,7 +368,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.6862438, 49.1263485, 0</coordinates>
@@ -375,7 +376,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.7960091, 49.0475867, 0</coordinates>
@@ -383,7 +384,7 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8007968, 49.1912969, 0</coordinates>
@@ -391,10 +392,410 @@
 </Placemark>
 
 <Placemark>
-<name>Hello World</name>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
 <description>Desc</description>
 <Point>
 <coordinates>-122.8539961, 49.136577, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8010659, 49.0551168, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8823531, 49.1632337, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7349585, 49.1023356, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7980901, 49.0597532, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8902651, 49.1288293, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6939961, 49.0402435, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6817944, 49.13286490000001, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6905475, 49.1735266, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8398876, 49.1877855, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7017389, 49.12645269999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7828257, 49.17384819999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6839778, 49.1701467, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7015422, 49.1496173, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7791067, 49.04356809999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8453576, 49.1878338, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8480364, 49.2006114, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8881163, 49.1486519, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8901189, 49.1741008, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8455965, 49.1374649, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7818553, 49.0491785, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8537899, 49.19165410000001, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6874451, 49.1263167, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.772656, 49.1189063, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8966165, 49.1879143, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8458033, 49.1987928, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8064165, 49.186129, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8537899, 49.19165410000001, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8744832, 49.1322152, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8450519, 49.1970868, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8346415, 49.1712686, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8455173, 49.1265185, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8012564, 49.0637406, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7867956, 49.1915127, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8084528, 49.0575438, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7818553, 49.0491785, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7818553, 49.0491785, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8823531, 49.1632337, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.6850992, 49.1214784, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8346415, 49.1712686, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8456654, 49.14847049999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8040038, 49.1669764, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8346415, 49.1712686, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8858261, 49.1962106, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8458185, 49.1742806, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7740594, 49.1553623, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.8615769, 49.14096499999999, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.7995557, 49.1482918, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.884614, 49.1353119, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.85, 49.183333, 0</coordinates>
+</Point>
+</Placemark>
+
+<Placemark>
+<styleUrl>#type_breakAndEnter</styleUrl><name>Hello World</name>
+<description>Desc</description>
+<Point>
+<coordinates>-122.782105, 49.1584922, 0</coordinates>
 </Point>
 </Placemark>
 

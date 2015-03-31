@@ -1,26 +1,25 @@
-App.Views.parking = {
-	map: {
-		kmlLayer: new google.maps.KmlLayer(
-	    {   
-	        url: 'https://raw.githubusercontent.com/cdegit/iat355-surrey-crime/master/data/parking.kml?token=ACubUifc8Rhjl8oVQvDf1ofQ9hP1pBKXks5VHlaMwA%3D%3D',
-	        preserveViewport: true,
-	        suppressInfoWindows: true,
-	        map: null
-	    }),
-		clickCallback: function() {
-			
-		}
-	},
-	chart: {
-		data: {},
-		init: function() {
+App.Views.parking = Object.create(App.BaseView);
 
-		},
-		render: function() {
-			
-		},
-		close: function() {
-			
-		}
-	}
+App.Views.parking.mapInit = function() {
+
+};
+
+App.Views.parking.mapRender = function() {
+
+};
+
+App.Views.parking.mapClose = function() {
+
+};
+
+App.Views.parking.chartInit = function() {
+
+};
+
+App.Views.parking.chartRender = function() {
+
+};
+
+App.Views.parking.chartClose = function() {
+
 };

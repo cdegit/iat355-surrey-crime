@@ -1,5 +1,6 @@
 for (view in App.Views) {
-    App.Views[view].chart.init();
+	App.Views[view].mapInit();
+    App.Views[view].chartInit();
 }
 
 App.resizeVis(1, 1);
