@@ -23,6 +23,7 @@ App.Views.crimeOverTime.mapInit = function() {
 
 		google.maps.event.addListener(tempMarker, "click", function(e){
 			tempMarker.setActive();
+			tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 		});
 		that.markers.push(tempMarker);
 	});
@@ -32,6 +33,7 @@ App.Views.crimeOverTime.mapInit = function() {
 		that.markers.forEach(function(marker) {
 			if (marker.month == data.month) {
 				marker.setActive();
+				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 			}
 		});
 	});
