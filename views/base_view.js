@@ -4,7 +4,7 @@ App.BaseView = {
 		baseMarker: {
 		    path: 'M 0 0 m -15, 0 a 15,15 0 1,0 30,0 a 15,15 0 1,0 -30,0',
 		    fillOpacity: 1,
-		    scale: 0.5,
+		    scale: 0.35,
 		    strokeWeight: 1,
 		    strokeColor: 'black',
 		    strokeOpacity: 0.25
@@ -12,7 +12,7 @@ App.BaseView = {
 		baseSelectedMarker: {
 		    path: 'M 0 0 m -15, 0 a 15,15 0 1,0 30,0 a 15,15 0 1,0 -30,0',
 		    fillOpacity: 1,
-		    scale: 0.5,
+		    scale: 0.35,
 		    strokeWeight: 2,
 		    strokeColor: 'black',
 		    strokeOpacity: 0.75

@@ -1,6 +1,6 @@
 function initMap() {
 	var properties = {
-	    center:new google.maps.LatLng(49.1833, -122.85),
+	    center:new google.maps.LatLng(49.13, -122.8),
 	    zoom:11,
 	    mapTypeId:google.maps.MapTypeId.ROADMAP
 	}

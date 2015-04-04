@@ -4,10 +4,11 @@ App.Views.crimeOverTime.markers = [];
 
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
-	crime2013data.forEach(function(crime, index) {
+	crimeData.forEach(function(crime, index) {
 		var tempMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(crime.latitude, crime.longitude),
 			month: crime.shortMonth,
+			year: crime.year,
 			icon: that.utilities.getMarkerIcon( that.crimeColors[crime.type] )
 		});
 
@@ -31,7 +32,7 @@ App.Views.crimeOverTime.mapInit = function() {
 	var sub = events.subscribe('crime/month_selected', function(data) {
 		// TODO: if not in month, should deselect
 		that.markers.forEach(function(marker) {
-			if (marker.month == data.month) {
+			if (marker.month == data.month && marker.year == +data.year) {
 				marker.setActive();
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 			}
@@ -140,7 +141,12 @@ App.Views.crimeOverTime.chartInit = function() {
 					})
 					.on('click', function(d, i) {
 						var month = data[i].Month.split(" ")[0];
-						events.publish('crime/month_selected', { month: month });
+						var year = "20" + data[i].Month.split("'")[1];
+
+						events.publish('crime/month_selected', { 
+							month: month,
+							year: year
+						});
 					});
 
 		myChart.transition()
