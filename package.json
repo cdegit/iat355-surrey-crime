@@ -1,17 +1,25 @@
 {
-  "name": "scatterplot",
+  "name": "SurreyCrime",
   "version": "0.0.0",
-  "description": "",
+  "author": {
+    "name": "Cassandra de Git",
+    "email": "cassandra.m.degit@gmail.com",
+    "web": "http://cassandradegit.com"
+  },
+  "contributors": [{
+    "name": "Clinton Walsh",
+    "email": "clwalsh@sfu.ca"
+  }],
+  "description": "Lorem Ipsum Please Work",
   "main": "server.js",
   "dependencies": {
     "express": "^4.11.1",
-    "node-geocoding": "*"
+    "node-geocoder": "*"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
   "license": "ISC"
 }
