@@ -22,4 +22,6 @@
 	cursor: e-resize;
 }
 
-/* use flex grow to work with handle??? */
+#collision-and-speed-chart {
+	display: none;
+}

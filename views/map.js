@@ -20,12 +20,6 @@ function initMap() {
             { lightness: 100 },
             { visibility: "simplified" }
         ]
-    },{
-        featureType: "road",
-        elementType: "labels",
-        stylers: [
-            { visibility: "off" }
-        ]
     }];
 
     App.map.setOptions({styles: styles});

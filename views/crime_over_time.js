@@ -9,15 +9,15 @@ App.Views.crimeOverTime.mapInit = function() {
 			position: new google.maps.LatLng(crime.latitude, crime.longitude),
 			month: crime.shortMonth,
 			year: crime.year,
-			icon: that.utilities.getMarkerIcon( that.crimeColors[crime.type] )
+			icon: that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] )
 		});
 
 		tempMarker.setActive = function() {
 			if (!tempMarker.active) {
 				tempMarker.active = true;
-				tempMarker.setIcon(that.utilities.getSelectedMarkerIcon( that.crimeColors[crime.type] ))
+				tempMarker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			} else {
-				tempMarker.setIcon(that.utilities.getMarkerIcon( that.crimeColors[crime.type] ))
+				tempMarker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
 				tempMarker.active = false;
 			}					
 		};
@@ -51,18 +51,6 @@ App.Views.crimeOverTime.mapClose = function() {
 		marker.setMap(null);
 	});
 };
-
-// brewer colors! http://bl.ocks.org/mbostock/5577023
-App.Views.crimeOverTime.crimeColors = {
-	"Break and Enter - Business": "rgb(228, 26, 28)",
-	"Break and Enter - Residence": "rgb(55, 126, 184)",
-	"Fatal/Injury Collision": "rgb(77, 175, 74)",
-	"Shoplifting": "rgb(152, 78, 163)",
-	"Theft from Motor Vehicle": "rgb(255, 127, 0)",
-	"Theft of Motor Vehicle": "rgb(255, 255, 51)"
-};
-
-
 
 App.Views.crimeOverTime.chartInit = function() {
 	var barData = [];
@@ -173,7 +161,7 @@ App.Views.crimeOverTime.chartInit = function() {
 			.orient('left')
 			.ticks(10);
 
-		var vGuide = d3.select('svg')
+		var vGuide = d3.select('#crime-chart')
 			.append('g');
 
 		vAxis(vGuide);
@@ -193,7 +181,7 @@ App.Views.crimeOverTime.chartInit = function() {
 			})
 			.orient('bottom');
 
-		var hGuide = d3.select('svg').append('g');
+		var hGuide = d3.select('#crime-chart').append('g');
 
 		hAxis(hGuide);
 		hGuide.attr('transform', 'translate('+margin.left+', '+(height+margin.top)+')');

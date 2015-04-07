@@ -26,6 +26,15 @@ App.BaseView = {
 			var icon = Object.create(this.baseSelectedMarker);
 			icon.fillColor = color;
 			return icon;
+		},
+		// brewer colors! http://bl.ocks.org/mbostock/5577023
+		crimeColors: {
+			"Break and Enter - Business": "rgb(228, 26, 28)",
+			"Break and Enter - Residence": "rgb(55, 126, 184)",
+			"Fatal/Injury Collision": "rgb(77, 175, 74)",
+			"Shoplifting": "rgb(152, 78, 163)",
+			"Theft from Motor Vehicle": "rgb(255, 127, 0)",
+			"Theft of Motor Vehicle": "rgb(255, 255, 51)"
 		}
 	},
 };
