@@ -23,6 +23,9 @@ function initMap() {
     }];
 
     App.map.setOptions({styles: styles});
+
+    App.map.tooltip = new google.maps.InfoWindow();
+    App.map.tooltip.currentMarker = null;
 }
 
 initMap();

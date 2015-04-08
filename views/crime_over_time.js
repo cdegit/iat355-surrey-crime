@@ -9,6 +9,8 @@ App.Views.crimeOverTime.mapInit = function() {
 			position: new google.maps.LatLng(crime.latitude, crime.longitude),
 			month: crime.shortMonth,
 			year: crime.year,
+			type: crime.type, 
+			address: crime.addr,
 			icon: that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] )
 		});
 
@@ -23,8 +25,19 @@ App.Views.crimeOverTime.mapInit = function() {
 		};
 
 		google.maps.event.addListener(tempMarker, "click", function(e){
-			tempMarker.setActive();
 			tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+			
+			if (App.map.tooltip.currentMarker != tempMarker) {
+				that.utilities.showMapTooltip(tempMarker, function() {
+					var content = "";
+					content += "<h2>" + tempMarker.type + "</h2>";
+					content += "<div><strong>Date:</strong> " + tempMarker.month + ", " + tempMarker.year + "</div>";
+					content += "<div><strong>Location:</strong> " + tempMarker.address + "</div>";
+					return content;
+				});
+			} else {
+				that.utilities.hideMapTooltip();
+			}
 		});
 		that.markers.push(tempMarker);
 	});

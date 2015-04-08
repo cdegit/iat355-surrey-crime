@@ -35,6 +35,18 @@ App.BaseView = {
 			"Shoplifting": "rgb(152, 78, 163)",
 			"Theft from Motor Vehicle": "rgb(255, 127, 0)",
 			"Theft of Motor Vehicle": "rgb(255, 255, 51)"
+		},
+		showMapTooltip: function(marker, contentCallback) {
+			// generate tooltip content
+			var content = contentCallback();
+			App.map.tooltip.setContent(content);
+
+			App.map.tooltip.open(App.map, marker);
+			App.map.tooltip.currentMarker = marker;
+		},
+		hideMapTooltip: function() {
+			App.map.tooltip.close();
+			App.map.tooltip.currentMarker = null;
 		}
 	},
 };
