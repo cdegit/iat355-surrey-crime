@@ -17,14 +17,31 @@ App.Views.crimeOverTime.mapInit = function() {
 				tempMarker.active = true;
 				tempMarker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			} else {
-				tempMarker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
+				tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 				tempMarker.active = false;
 			}					
 		};
 
+		//sets every other icon to be transparent
+		tempMarker.setNonActive = function() {
+			if (!tempMarker.active) {
+				tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+			} 
+		};
+
+		//checks if the icon is active
+		tempMarker.isActive = function() {
+			return tempMarker.active();
+		};
+
+		//resets all the icons to their default state
+		tempMarker.resetIcons = function() {
+			tempMarker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
+		};
+
 		google.maps.event.addListener(tempMarker, "click", function(e){
 			tempMarker.setActive();
-			tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+			tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 2);
 		});
 		that.markers.push(tempMarker);
 	});
@@ -36,7 +53,28 @@ App.Views.crimeOverTime.mapInit = function() {
 				marker.setActive();
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 			}
+			else{
+				//every other icon is set to transparent
+				marker.setNonActive();
+				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 0);
+			}
 		});
+
+		//check is every icon is not active. 
+		var nonActive = false;
+		that.markers.forEach(function(marker) {
+			if(marker.active)
+			{
+				nonActive = true;
+			}
+		});
+		//if every icon is not active then reset to their default state
+		if(!nonActive)
+		{
+			that.markers.forEach(function(marker) {
+				marker.resetIcons();
+			});
+		}
 	});
 };
 

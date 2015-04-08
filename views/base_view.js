@@ -17,6 +17,14 @@ App.BaseView = {
 		    strokeColor: 'black',
 		    strokeOpacity: 0.75
 		},
+		baseNonSelectedMarker: {
+		    path: 'M 0 0 m -15, 0 a 15,15 0 1,0 30,0 a 15,15 0 1,0 -30,0',
+		    fillOpacity: 0.1,
+		    scale: 0.35,
+		    strokeWeight: 0,
+		    strokeColor: 'black',
+		    strokeOpacity: 0.75
+		},
 		getMarkerIcon: function(color) {
 			var icon = Object.create(this.baseMarker);
 			icon.fillColor = color;
@@ -24,6 +32,11 @@ App.BaseView = {
 		},
 		getSelectedMarkerIcon: function(color) {
 			var icon = Object.create(this.baseSelectedMarker);
+			icon.fillColor = color;
+			return icon;
+		},
+		getNonSelectedMarkerIcon: function(color) {
+			var icon = Object.create(this.baseNonSelectedMarker);
 			icon.fillColor = color;
 			return icon;
 		},
