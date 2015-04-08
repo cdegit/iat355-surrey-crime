@@ -6,17 +6,22 @@
         <script src="d3.js"></script>
         <script src="pubsub.js"></script>
 
+        <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
         <link href='styles.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <header>
-            <h1>Crime in Surrey</h1>
-            <select>
-                <option value="crimeOverTime">Crime</option>
-                <option value="parking">Parking</option>
-                <option value="trafficCalming">Traffic Calming</option>
+            <h1>Crime and Collisions in Surrey</h1>
+            <label for="select-view">Show Me:</label>
+            <select id="select-view">
+                <option value="crimeOverTime">Crime Over Time</option>
+<!--                 <option value="parking">Parking</option>
+                <option value="trafficCalming">Traffic Calming</optio -->n>
                 <option value="collisionsAndSpeed">Collisions and Speed</option>
             </select>
+            <div class="author-section">
+                By Clinton Walsh and Cassandra de Git
+            </div>
         </header>
         <div class="vis-content">
             <div id="gMap"></div>

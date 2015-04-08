@@ -1,3 +1,30 @@
+body {
+	font-family: 'Oxygen', sans-serif;
+	margin: 0px;
+}
+
+header {
+	padding: 0 10px;
+	border-bottom: 1px solid #D2527F;
+	margin-bottom: 15px;
+	box-shadow: lightgrey 0px 0px 3px;
+	position: relative;
+}
+
+header h1 {
+	font-weight: 400;
+	display: inline-block;
+	margin-right: 25px;
+	margin-bottom: 15px;
+}
+
+header .author-section {
+	font-size: 0.8em;
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+}
+
 #gMap {
 	flex-grow: 1;
     height: 500px;
@@ -14,6 +41,7 @@
 
 .vis-content {
 	display: flex;
+	margin: 0 10px;
 }
 
 #resize-handle {
