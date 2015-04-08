@@ -73,8 +73,10 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 	var barData = [];
 
 	for (street in streetsAndCollisionsData) {
+		if(streetsAndCollisionsData[street].count > 5)
 		barData.push( streetsAndCollisionsData[street] );
 	}
+
 
 	var margin = {top:30, right:30, bottom:120, left:80}
 
@@ -118,10 +120,14 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 					y: height
 				})
 				.on('mouseover', function(d, i){
+					events.publish('collisions/street_selected', { 
+						street: d.streetName
+					});
+
 					toolTip.transition()
 						.style('opacity', 0.9);
 
-					toolTip.html(d.streetName)
+					toolTip.html("Collisions: "+d.count+" / Road Speed: "+d.speed)
 						.style('left', (d3.event.pageX - 35) + 'px')
 						.style('top', (d3.event.pageY - 35) + 'px');
 
@@ -131,6 +137,10 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 						.style('fill', 'yellow');
 				})
 				.on('mouseout', function(d){
+					events.publish('collisions/street_selected', { 
+						street: d.streetName
+					});
+
 					d3.select(this)
 						.style('opacity', 1)
 						.style('fill', tempColor);
@@ -143,9 +153,9 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 						.style('top', '-10px');
 				})
 				.on('click', function(d, i) {
-					events.publish('collisions/street_selected', { 
+					/*events.publish('collisions/street_selected', { 
 						street: d.streetName
-					});
+					});*/
 				});
 
 	myChart.transition()
