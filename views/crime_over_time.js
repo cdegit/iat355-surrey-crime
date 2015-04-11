@@ -104,107 +104,152 @@ App.Views.crimeOverTime.mapClose = function() {
 };
 
 App.Views.crimeOverTime.chartInit = function() {
-	var barData = [];
+	var that = this;
 
-	d3.tsv('data/crime_summary.tsv', function(data){
-		for(key in data)
+	// get all the data set up
+	// d3 expects an array so give it an array
+
+	var crimeLineData = [
 		{
-			barData.push(data[key].Crime);
+			type: "Break and Enter - Business",
+			points: [] // one point for each month, in order
+		},
+		{
+			type: "Break and Enter - Residence",
+			points: [] 
+		},
+		{
+			type: "Fatal/Injury Collision",
+			points: [] 
+		},
+		{
+			type: "Shoplifting",
+			points: [] 
+		},
+		{
+			type: "Theft from Motor Vehicle",
+			points: [] 
+		},
+		{
+			type: "Theft of Motor Vehicle",
+			points: [] 
+		},
+	];
+
+	var crime2013LineData = JSON.parse( JSON.stringify( crimeLineData ) );
+	var crime2014LineData = JSON.parse( JSON.stringify( crimeLineData ) );
+
+	populateLineData(crime2013LineData, 2013);
+	populateLineData(crime2014LineData, 2014);
+
+	function populateLineData(lineData, year) {
+		for(month in crimeSummaryData[year])
+		{
+			for (crimeType in lineData) {
+				lineData[crimeType].points.push( crimeSummaryData[year][month][lineData[crimeType].type] );
+			}
 		}
+	}
 
-		var margin = {top:30, right:30, bottom:120, left:80}
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-		var height = 400 - margin.top - margin.bottom,
-			width = 600 - margin.left - margin.right,
-			barWidth = 50,
-			barOffset = 5;
 
-		var tempColor;
+	var margin = {top:30, right:30, bottom:50, left:80};
 
-		var yScale = d3.scale.linear()
-					.domain([0, d3.max(barData)])
-					.range([0, height]);
+	var height = 200 - margin.top - margin.bottom,
+		width = 400 - margin.left - margin.right,
+		barWidth = 50,
+		barOffset = 5;
 
-		var xScale = d3.scale.ordinal()
-					.domain(d3.range(0, barData.length))
-					.rangeBands([0, width], 0.2, 0.2);
+	var yScale = d3.scale.linear()
+		.domain([30, 0])
+		.range([0, height]);
 
-		var toolTip = d3.select('body').append('div')
-			.style({
-				position: 'absolute',
-				padding: '0 10px',
-				background: 'white',
-				opacity: 0
-			});
+	var xScale = d3.scale.ordinal()
+		.domain(d3.range(0, months.length))
+		.rangeBands([0, width], 0.2, 0.2);
 
-		var myChart = d3.select('#crime-chart')
-			.style('width', "100%")
-			.attr('height', height + margin.top + margin.bottom)
+	var toolTip = d3.select('body').append('div')
+		.style({
+			position: 'absolute',
+			padding: '0 10px',
+			background: 'white',
+			opacity: 0
+		});
+
+	var chart2014 = d3.select('#crime-chart')
+		.style('width', "100%")
+		.attr('height', height + margin.top + margin.bottom)
+		.append('g')
+		.attr("id", "crime-over-time-2014");
+
+	var chart2013 = d3.select('#crime-chart')
+		.append('g')
+		.attr("id", "crime-over-time-2013")
+		.attr('transform', 'translate('+ 350 +', '+ 0 +')');
+
+	setupChart(chart2014, crime2014LineData, 2014);
+	setupChart(chart2013, crime2013LineData, 2013);
+
+	function setupChart(chart, data, year) {
+		chart
 			.append('g')
-				.attr('transform', 'translate('+margin.left+', '+margin.top+')')
-				.selectAll('rect').data(barData).enter()
-				.append('rect')
-					.style('fill', color)
-					.attr({
-						width: xScale.rangeBand(),
-						height: 0,
-						x: function(d,i){
-							return xScale(i);
-						},
-						y: height
-					})
-					.on('mouseover', function(d){
-						toolTip.transition()
-							.style('opacity', 0.9);
+				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
+				.selectAll('polyline')
+				.data(data)
+				.enter()
+				.append('polyline')
+				.attr({
+					fill: "none",
+					stroke: function(d) {
+						return that.utilities.crimeColors[d.type];
+					},
+					points: function(d) {
+						var points = "";
 
-						toolTip.html(d)
-							.style('left', (d3.event.pageX - 35) + 'px')
-							.style('top', (d3.event.pageY - 35) + 'px');
-
-						tempColor = this.style.fill;
-						d3.select(this)
-							.style('opacity', 0.5)
-							.style('fill', 'yellow');
-					})
-					.on('mouseout', function(d){
-						d3.select(this)
-							.style('opacity', 1)
-							.style('fill', tempColor);
-
-						toolTip.transition()
-							.style('opacity', 0);
-
-						toolTip.html(d)
-							.style('left', '-10px')
-							.style('top', '-10px');
-					})
-					.on('click', function(d, i) {
-						var month = data[i].Month.split(" ")[0];
-						var year = "20" + data[i].Month.split("'")[1];
-
-						events.publish('crime/month_selected', { 
-							month: month,
-							year: year
+						d.points.forEach(function(point, index) {
+							points += " " + xScale(index) + "," + yScale(point);
 						});
-					});
 
-		myChart.transition()
-			.attr({
-				height: function(d){
-					return yScale(d);
-				},
-				y: function(d){
-					return height - yScale(d);
-				}
-			})
-			.delay(function(d, i){
-				return i * 20;
-			})
-			.duration(1000)
-			.ease('elastic');
+						return points;
+					},
+					opacity: 1
+				})
+				.on('mouseover', function(d, i){
+					toolTip.transition()
+						.style('opacity', 0.9);
+
+					// toolTip.html(d.points)
+					// 	.style('left', (d3.event.pageX - 35) + 'px')
+					// 	.style('top', (d3.event.pageY - 35) + 'px');
+
+					// d3.select(this)
+					// // 	.style('opacity', 0.5)
+					// 	.style('stroke', 'black');
+				})
+				.on('mouseout', function(d){
+					// d3.select(this)
+					// 	.style('opacity', 1)
+					// 	.style('stroke', that.utilities.crimeColors[d.type]);
+
+					// toolTip.transition()
+					// 	.style('opacity', 0);
+
+					// toolTip.html(d)
+					// 	.style('left', '-10px')
+					// 	.style('top', '-10px');
+				})
+				.on('click', function(d, i) {
+					// var month = data[i].Month.split(" ")[0];
+
+					// events.publish('crime/month_selected', { 
+					// 	month: month,
+					// 	year: 2014
+					// });
+				});
 
 		var vGuideScale = d3.scale.linear()
-			.domain([0, d3.max(barData)])
+			.domain([0, 30])
 			.range([height, 0]);
 
 		var vAxis = d3.svg.axis()
@@ -212,8 +257,7 @@ App.Views.crimeOverTime.chartInit = function() {
 			.orient('left')
 			.ticks(10);
 
-		var vGuide = d3.select('#crime-chart')
-			.append('g');
+		var vGuide = chart.append('g');
 
 		vAxis(vGuide);
 
@@ -228,11 +272,11 @@ App.Views.crimeOverTime.chartInit = function() {
 		var hAxis = d3.svg.axis()
 			.scale(xScale)
 			.tickFormat(function(d){
-				return data[d].Month;
+				return months[d];
 			})
 			.orient('bottom');
 
-		var hGuide = d3.select('#crime-chart').append('g');
+		var hGuide = chart.append('g');
 
 		hAxis(hGuide);
 		hGuide.attr('transform', 'translate('+margin.left+', '+(height+margin.top)+')');
@@ -255,18 +299,14 @@ App.Views.crimeOverTime.chartInit = function() {
 	            	return "rotate(-65)" 
 	            }
 			});
-
-	    function color(d,i)
-	    {
-	    	if(i <= 11)
-	    		return "blue";
-	    	else
-	    		return "red";
-	    }								
-
-	});
-	
+		
+		chart.append('text')
+			.text(year)
+			.attr('transform', 'translate('+ 220 +', '+margin.top+')')
+			.attr('text-anchor', 'middle');
+	}
 };
+
 
 App.Views.crimeOverTime.chartRender = function() {
 	d3.select("#crime-chart").style("display", "block");
