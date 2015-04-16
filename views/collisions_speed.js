@@ -46,6 +46,12 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 						that.utilities.showMapTooltip(marker, function() {
 							var content = "";
 							content += "<h2>" + marker.type + "</h2>";
+							content += "<div><strong>Address:</strong> " + marker.streetName + "</div>";
+
+							// if we can get the speed from the steet data, display it here
+							if (streetsAndCollisionsData[ that.stripAddress(marker.streetName) ]) {
+								content += "<div><strong>Speed:</strong> " + streetsAndCollisionsData[ that.stripAddress(marker.streetName) ].speed + "</div>";
+							}
 							return content;
 						});
 					} else {
@@ -107,6 +113,35 @@ App.Views.collisionsAndSpeed.stripNumberSuffix = function(streetName) {
 	}
 
 	return newStreetNumber;
+}
+
+App.Views.collisionsAndSpeed.stripAddress = function(address) {
+	// even for intersections just grab the very first street for now
+	var street = address.split(",")[0];
+	if (street.indexOf("/") != -1) {
+		street = street.split("/")[0];
+	}
+
+	street = this.stripNumberSuffix(street);
+
+	// if it's king george blvd
+	if (street.indexOf("KING GEORGE") != -1) {
+		street = "KING GEORGE";
+	}
+
+	street = street.trim();
+
+	// if it has a number at the front
+	if (street.split(" ").length == 3) {
+		street = street.split(" ")[1] + " " + street.split(" ")[2];
+	} else if (street.split(" ").length == 4) { 
+		// this case is for if it has an extra space between the number and the address
+		// why it has that who knows
+		// but this makes it work
+		street = street.split(" ")[2] + " " + street.split(" ")[3];
+	}
+
+	return street;
 }
 
 App.Views.collisionsAndSpeed.mapRender = function() {
@@ -173,10 +208,6 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 					y: height
 				})
 				.on('mouseover', function(d, i){
-					/*events.publish('collisions/street_selected', { 
-						street: d.streetName
-					});*/
-
 					toolTip.transition()
 						.style('opacity', 0.9);
 
@@ -190,10 +221,6 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 						.style('fill', 'yellow');
 				})
 				.on('mouseout', function(d){
-					/*events.publish('collisions/street_selected', { 
-						street: d.streetName
-					});*/
-
 					d3.select(this)
 						.style('opacity', 1)
 						.style('fill', tempColor);
