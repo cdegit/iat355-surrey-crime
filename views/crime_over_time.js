@@ -140,6 +140,7 @@ App.Views.crimeOverTime.chartInit = function() {
 		},
 	];
 
+	// create deep copies of crimeLineData
 	var crime2013LineData = JSON.parse( JSON.stringify( crimeLineData ) );
 	var crime2014LineData = JSON.parse( JSON.stringify( crimeLineData ) );
 
@@ -218,38 +219,6 @@ App.Views.crimeOverTime.chartInit = function() {
 						return points;
 					},
 					opacity: 1
-				})
-				.on('mouseover', function(d, i){
-					toolTip.transition()
-						.style('opacity', 0.9);
-
-					// toolTip.html(d.points)
-					// 	.style('left', (d3.event.pageX - 35) + 'px')
-					// 	.style('top', (d3.event.pageY - 35) + 'px');
-
-					// d3.select(this)
-					// // 	.style('opacity', 0.5)
-					// 	.style('stroke', 'black');
-				})
-				.on('mouseout', function(d){
-					// d3.select(this)
-					// 	.style('opacity', 1)
-					// 	.style('stroke', that.utilities.crimeColors[d.type]);
-
-					// toolTip.transition()
-					// 	.style('opacity', 0);
-
-					// toolTip.html(d)
-					// 	.style('left', '-10px')
-					// 	.style('top', '-10px');
-				})
-				.on('click', function(d, i) {
-					// var month = data[i].Month.split(" ")[0];
-
-					// events.publish('crime/month_selected', { 
-					// 	month: month,
-					// 	year: 2014
-					// });
 				});
 
 		var vGuideScale = d3.scale.linear()
@@ -303,11 +272,51 @@ App.Views.crimeOverTime.chartInit = function() {
 	            	return "rotate(-65)" 
 	            }
 			});
+
+		hGuide.selectAll('.tick')
+			.attr("data-month", function(d, i) {
+				return months[i];
+			})
 		
+		// add title to chart
 		chart.append('text')
 			.text(year)
 			.attr('transform', 'translate('+ 220 +', '+margin.top+')')
 			.attr('text-anchor', 'middle');
+
+		// add events to chart
+		chart.on("mousemove", function() {
+			$(this).find("[data-month]").each(function(i, tick) {
+				// check if the mouse is within the bounding rect for this tick
+				// if so, move the marker to this tick
+				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right) {
+					// position the marker over the line for this tick
+					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
+					d3.select("#month-selection").style( "display", "block" );
+
+					return false;
+				}
+			});
+		});
+
+		d3.select("#chart").on("click", function() {
+			// for whatever reason have to listen on this element
+			// listening on anything lower down just doesn't work
+			// event doesn't seem to bubble up? 
+
+			$(this).find("[data-month]").each(function(i, tick) {
+				// check if the mouse is within the bounding rect for this tick
+				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right && d3.event.pageY <= tick.getBoundingClientRect().bottom) {
+					// select this month
+					events.publish('crime/month_selected', {
+						month: $(tick).data("month"),
+						year: year
+					});
+
+					return false;
+				}
+			});
+		});
 	}
 };
 
@@ -318,4 +327,5 @@ App.Views.crimeOverTime.chartRender = function() {
 
 App.Views.crimeOverTime.chartClose = function() {
 	d3.select("#crime-chart").style("display", "none");
+	d3.select("#month-selection").style( "display", "none" );
 };

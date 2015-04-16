@@ -53,3 +53,13 @@ header .author-section {
 #collision-and-speed-chart {
 	display: none;
 }
+
+#month-selection {
+	background: rgba(100, 100, 100, 0.15);
+	width: 9;
+	margin-left: -4px;
+	height: 120;
+	position: absolute;
+	top: 122px;
+	display: none;
+}
