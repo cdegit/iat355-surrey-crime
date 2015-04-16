@@ -5,7 +5,7 @@ App.Views.crimeOverTime.markers = [];
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
 	crimeData.forEach(function(crime, index) {
-		var tempMarker = new google.maps.Marker({
+		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(crime.latitude, crime.longitude),
 			month: crime.shortMonth,
 			year: crime.year,
@@ -14,53 +14,61 @@ App.Views.crimeOverTime.mapInit = function() {
 			icon: that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] )
 		});
 
-		tempMarker.setActive = function() {
-			if (!tempMarker.active) {
-				tempMarker.active = true;
-				tempMarker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+		marker.setActive = function() {
+			if (!marker.active) {
+				marker.active = true;
+				marker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			} else {
-				tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
-				tempMarker.active = false;
+				marker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+				marker.active = false;
 			}					
 		};
 
 		//sets every other icon to be transparent
-		tempMarker.setNonActive = function() {
-			if (!tempMarker.active) {
-				tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+		marker.setNonActive = function() {
+			if (!marker.active) {
+				marker.nonActive = true;
+				marker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			} 
 		};
 
-		//checks if the icon is active
-		tempMarker.isActive = function() {
-			return tempMarker.active();
-		};
-
 		//resets all the icons to their default state
-		tempMarker.resetIcons = function() {
-			tempMarker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
+		marker.resetIcons = function() {
+			marker.nonActive = false;
+			marker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
 		};
 
-		google.maps.event.addListener(tempMarker, "click", function(e){
-			tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
-			
-			if (App.map.tooltip.currentMarker != tempMarker) {
-				that.utilities.showMapTooltip(tempMarker, function() {
-					var content = "";
-					content += "<h2>" + tempMarker.type + "</h2>";
-					content += "<div><strong>Date:</strong> " + tempMarker.month + ", " + tempMarker.year + "</div>";
-					content += "<div><strong>Location:</strong> " + tempMarker.address + "</div>";
-					return content;
-				});
-			} else {
-				that.utilities.hideMapTooltip();
+		google.maps.event.addListener(marker, "click", function(e){
+			if (!marker.nonActive) {
+				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+				
+				if (App.map.tooltip.currentMarker != marker) {
+					that.utilities.showMapTooltip(marker, function() {
+						var content = "";
+						content += "<h2>" + marker.type + "</h2>";
+						content += "<div><strong>Date:</strong> " + marker.month + ", " + marker.year + "</div>";
+						content += "<div><strong>Location:</strong> " + marker.address + "</div>";
+						return content;
+					});
+				} else {
+					that.utilities.hideMapTooltip();
+				}
 			}
 		});
-		that.markers.push(tempMarker);
+		that.markers.push(marker);
 	});
 
+
+	that.selectedMonths = [];
+
 	var sub = events.subscribe('crime/month_selected', function(data) {
-		// TODO: if not in month, should deselect
+		// toggle whether or not the street is selected
+		if (that.selectedMonths.indexOf(data.month + data.year) == -1) {
+			that.selectedMonths.push(data.month + data.year);
+		} else {
+			that.selectedMonths.splice( that.selectedMonths.indexOf(data.month + data.year), 1 );
+		}
+
 		that.markers.forEach(function(marker) {
 			if (marker.month == data.month && marker.year == +data.year) {
 				marker.setActive();
@@ -70,19 +78,15 @@ App.Views.crimeOverTime.mapInit = function() {
 				//every other icon is set to transparent
 				marker.setNonActive();
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 0);
+
+				if (App.map.tooltip.currentMarker == marker) {
+					that.utilities.hideMapTooltip();
+				}
 			}
 		});
 
-		//check is every icon is not active. 
-		var nonActive = false;
-		that.markers.forEach(function(marker) {
-			if(marker.active)
-			{
-				nonActive = true;
-			}
-		});
-		//if every icon is not active then reset to their default state
-		if(!nonActive)
+		// if no month is selected, reset all markers to their default state
+		if(that.selectedMonths.length == 0)
 		{
 			that.markers.forEach(function(marker) {
 				marker.resetIcons();

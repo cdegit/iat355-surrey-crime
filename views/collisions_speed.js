@@ -7,58 +7,67 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 	crimeData.forEach(function(crime, index) {
 		// Only display markers for collisions for this map
 		if (crime.type == "Fatal/Injury Collision") {
-			var tempMarker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(crime.latitude, crime.longitude),
 				streetName: crime.addr,
 				type: crime.type,
 				icon: that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] )
 			});
 
-			tempMarker.setActive = function() {
-				if (!tempMarker.active) {
-					tempMarker.active = true;
-					tempMarker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+			marker.setActive = function() {
+				if (!marker.active) {
+					marker.active = true;
+					marker.setIcon(that.utilities.getSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 				} else {
-					tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
-					tempMarker.active = false;
+					marker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+					marker.active = false;
 				}					
 			};
 
 			//sets every other icon to be transparent
-			tempMarker.setNonActive = function() {
-				if (!tempMarker.active) {
-					tempMarker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
+			marker.setNonActive = function() {
+				if (!marker.active) {
+					marker.nonActive = true;
+					marker.setIcon(that.utilities.getNonSelectedMarkerIcon( that.utilities.crimeColors[crime.type] ))
 				} 
 			};
 
-			//checks if the icon is active
-			tempMarker.isActive = function() {
-				return tempMarker.active();
-			};
-
 			//resets all the icons to their default state
-			tempMarker.resetIcons = function() {
-				tempMarker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
+			marker.resetIcons = function() {
+				marker.nonActive = false;
+				marker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			};
 
-			google.maps.event.addListener(tempMarker, "click", function(e){
-				tempMarker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+			google.maps.event.addListener(marker, "click", function(e){
+				if (!marker.nonActive) {
+					marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 
-				if (App.map.tooltip.currentMarker != tempMarker) {
-					that.utilities.showMapTooltip(tempMarker, function() {
-						var content = "";
-						content += "<h2>" + tempMarker.type + "</h2>";
-						return content;
-					});
-				} else {
-					that.utilities.hideMapTooltip();
+					if (App.map.tooltip.currentMarker != marker) {
+						that.utilities.showMapTooltip(marker, function() {
+							var content = "";
+							content += "<h2>" + marker.type + "</h2>";
+							return content;
+						});
+					} else {
+						that.utilities.hideMapTooltip();
+					}
 				}
 			});
-			that.markers.push(tempMarker);
+			that.markers.push(marker);
 		}
 	});
 
+
+	that.selectedStreets = [];
+
 	var sub = events.subscribe('collisions/street_selected', function(data) {
+		// toggle whether or not the street is selected
+		if (that.selectedStreets.indexOf(data.street) == -1) {
+			that.selectedStreets.push(data.street);
+		} else {
+			that.selectedStreets.splice( that.selectedStreets.indexOf(data.street), 1 );
+		}
+
 		that.markers.forEach(function(marker) {
 			// had th's and nd's, which the street data doesn't have :(
 			if (that.stripNumberSuffix(marker.streetName).indexOf(data.street) != -1) {
@@ -66,21 +75,18 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 			}
 			else{
-				//every other icon is set to transparent
+				//every other marker is set to transparent
 				marker.setNonActive();
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 0);
+
+				if (App.map.tooltip.currentMarker == marker) {
+					that.utilities.hideMapTooltip();
+				}
 			}
 		});
-		//check is every icon is not active. 
-		var nonActive = false;
-		that.markers.forEach(function(marker) {
-			if(marker.active)
-			{
-				nonActive = true;
-			}
-		});
-		//if every icon is not active then reset to their default state
-		if(!nonActive)
+
+		// if no streets are selected, reset all markers to their default state
+		if(that.selectedStreets.length == 0)
 		{
 			that.markers.forEach(function(marker) {
 				marker.resetIcons();
