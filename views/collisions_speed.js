@@ -96,7 +96,7 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 };
 
 App.Views.collisionsAndSpeed.stripNumberSuffix = function(streetName) {
-	var newStreetNumber = "";
+	var newStreetNumber = streetName;
 
 	if (streetName.indexOf("TH") != -1) {
 		newStreetNumber = streetName.slice(0, streetName.indexOf("TH")) + streetName.slice(streetName.indexOf("TH") + 2, streetName.length);
