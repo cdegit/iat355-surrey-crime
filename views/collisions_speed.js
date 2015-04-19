@@ -165,6 +165,10 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 		barData.push( streetsAndCollisionsData[street] );
 	}
 
+	// sort by speed, with 60km/h first
+	barData.sort( function(a, b) {
+		return d3.descending(+a.speed, +b.speed);
+	});
 
 	var margin = {top:30, right:30, bottom:120, left:80}
 
