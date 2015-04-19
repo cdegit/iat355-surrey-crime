@@ -1,3 +1,4 @@
+// this view provides base functions used by all views
 App.BaseView = {
 	utilities: {
 		// circle path: http://stackoverflow.com/a/10477334/3670758

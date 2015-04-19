@@ -2,8 +2,12 @@ App.Views.crimeOverTime = Object.create(App.BaseView);
 
 App.Views.crimeOverTime.markers = [];
 
+// function for initializing the map view
 App.Views.crimeOverTime.mapInit = function() {
-	var that = this;
+	// the value of this will be different for the callback functions, so use the magic of closures
+	var that = this; 
+
+	// for each entry in the crime dataset, create a marker and give its all the necessary functions
 	crimeData.forEach(function(crime, index) {
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(crime.latitude, crime.longitude),
@@ -38,8 +42,11 @@ App.Views.crimeOverTime.mapInit = function() {
 			marker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
 		};
 
+		// if the marker is clicked, toggle the tooltip
 		google.maps.event.addListener(marker, "click", function(e){
+			// if the marker is active, toggle the tooltip
 			if (!marker.nonActive) {
+				// bring the marker to the front so we can see it
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 				
 				if (App.map.tooltip.currentMarker != marker) {
@@ -55,20 +62,25 @@ App.Views.crimeOverTime.mapInit = function() {
 				}
 			}
 		});
+
+		// add the marker to the set of markers
 		that.markers.push(marker);
 	});
 
 
 	that.selectedMonths = [];
 
+	// if a month is selected, either toggle its markers
 	var sub = events.subscribe('crime/month_selected', function(data) {
-		// toggle whether or not the street is selected
+		// toggle whether or not the month is selected
 		if (that.selectedMonths.indexOf(data.month + data.year) == -1) {
 			that.selectedMonths.push(data.month + data.year);
 		} else {
 			that.selectedMonths.splice( that.selectedMonths.indexOf(data.month + data.year), 1 );
 		}
 
+		// for each marker, if in a selected month set it to active
+		// else set it to nonActive
 		that.markers.forEach(function(marker) {
 			if (marker.month == data.month && marker.year == +data.year) {
 				marker.setActive();
@@ -79,6 +91,7 @@ App.Views.crimeOverTime.mapInit = function() {
 				marker.setNonActive();
 				marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 0);
 
+				// if this marker is being hidden, hide the tooltip
 				if (App.map.tooltip.currentMarker == marker) {
 					that.utilities.hideMapTooltip();
 				}
@@ -94,6 +107,7 @@ App.Views.crimeOverTime.mapInit = function() {
 		}
 	});
 
+	// if a crime is filtered, toggle its visibility 
 	events.subscribe('crime/crime_filtered', function(data) {
 		that.markers.forEach(function(marker) {
 			if (marker.type == data.type) {
@@ -107,18 +121,21 @@ App.Views.crimeOverTime.mapInit = function() {
 	});
 };
 
+// show the map
 App.Views.crimeOverTime.mapRender = function() {
 	this.markers.forEach(function(marker) {
 		marker.setMap(App.map);
 	});
 };
 
+// hide the map
 App.Views.crimeOverTime.mapClose = function() {
 	this.markers.forEach(function(marker) {
 		marker.setMap(null);
 	});
 };
 
+// initialize the chart
 App.Views.crimeOverTime.chartInit = function() {
 	var that = this;
 
@@ -156,6 +173,7 @@ App.Views.crimeOverTime.chartInit = function() {
 	var crime2013LineData = JSON.parse( JSON.stringify( crimeLineData ) );
 	var crime2014LineData = JSON.parse( JSON.stringify( crimeLineData ) );
 
+	// now that the objects are set up, fill them with data
 	populateLineData(crime2013LineData, 2013);
 	populateLineData(crime2014LineData, 2014);
 
@@ -168,7 +186,7 @@ App.Views.crimeOverTime.chartInit = function() {
 		}
 	}
 
-	//filter booleans
+	// keep track of whether a crime is visible
 	var crimeVisible = { 
 		"Break and Enter - Business": true,
 		"Break and Enter - Residence": true,
@@ -214,24 +232,30 @@ App.Views.crimeOverTime.chartInit = function() {
 		.attr("id", "crime-over-time-2014")
 		.attr('transform', 'translate('+ 350 +', '+ 0 +')');
 
+	// set up each chart
 	setupChart(chart2013, crime2013LineData, 2013);
 	setupChart(chart2014, crime2014LineData, 2014);
 
-	//checkboxes
+	// set up the events needed for both charts
+	
+	// if a checkbox is changed, toggle visiblity of that crime
 	d3.selectAll("#legendCheck input[type=checkbox]")
 		.on("change", function(){
 		    crimeVisible[this.value] = this.checked;
 		    updateChart(chart2013, crime2013LineData);
 		    updateChart(chart2014, crime2014LineData);
 			
+			// notify the map that a crime has been filtered
 			events.publish('crime/crime_filtered', {
 				type: this.value,
 				visible: this.checked
 			});
 		});
 
+	// hide the tooltip when you click its close button
 	d3.select("#graphToolTipClose").on("click", hideGraphToolTip);
 
+	// draw the charts and add events
 	function setupChart(chart, data, year) {
 		chart
 			.append('g')
@@ -248,6 +272,7 @@ App.Views.crimeOverTime.chartInit = function() {
 					points: function(d) {
 						var points = "";
 
+						// add a point on the polyline for each value in points
 						d.points.forEach(function(point, index) {
 							points += " " + xScale(index) + "," + yScale(point);
 						});
@@ -257,6 +282,8 @@ App.Views.crimeOverTime.chartInit = function() {
 					opacity: 1
 				});
 
+		// underneath the polylines, draw a bunch of bars
+		// these will be used to show when a month is selected
 		var monthBars = chart
 			.append('g')
 				.attr('transform', 'translate('+ 110 +', '+margin.top+')')
@@ -273,6 +300,8 @@ App.Views.crimeOverTime.chartInit = function() {
 					width: 9,
 					height: 120	
 				});
+
+		// draw the axes
 
 		var vGuideScale = d3.scale.linear()
 			.domain([0, 30])
@@ -392,8 +421,8 @@ App.Views.crimeOverTime.chartInit = function() {
 		});
 	}
 
+	// shows or hides crimes
 	function updateChart(chart, data) {
-		//filters
 		chart.selectAll("polyline")
 		    .data(data)
 		    .attr("opacity", function(d, i){
@@ -408,6 +437,7 @@ App.Views.crimeOverTime.chartInit = function() {
 	//show tool tip on hover
 	function showGraphToolTip(d, monthIndex, year, xPos, yPos)
 	{
+		// provide presets for the location, just in case it isn't provided
 		var x = xPos || d3.event.pageX;
 		var y = yPos || d3.event.pageY;
 
@@ -445,6 +475,7 @@ App.Views.crimeOverTime.chartInit = function() {
 };
 
 
+// display the chart
 App.Views.crimeOverTime.chartRender = function() {
 	d3.select("#crime-chart").style("display", "block");
 	d3.select("#legendCheck")
@@ -454,6 +485,7 @@ App.Views.crimeOverTime.chartRender = function() {
 
 };
 
+// hide the chart
 App.Views.crimeOverTime.chartClose = function() {
 	d3.select("#crime-chart").style("display", "none");
 	d3.select("#month-selection").style( "display", "none" );

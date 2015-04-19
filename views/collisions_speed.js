@@ -2,8 +2,13 @@ App.Views.collisionsAndSpeed = Object.create(App.BaseView);
 
 App.Views.collisionsAndSpeed.markers = [];
 
+// function for initializing the map view
 App.Views.collisionsAndSpeed.mapInit = function() {
+	// the value of this will be different for the callback functions, so use the magic of closures
 	var that = this;
+	
+	// for each entry in crime data, if it's a collision, create a marker for it
+	// and add the appropriate functions to the marker
 	crimeData.forEach(function(crime, index) {
 		// Only display markers for collisions for this map
 		if (crime.type == "Fatal/Injury Collision") {
@@ -38,8 +43,11 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 				marker.setIcon(that.utilities.getMarkerIcon( that.utilities.crimeColors[crime.type] ))
 			};
 
+			// if the marker is clicked, toggle the tooltip
 			google.maps.event.addListener(marker, "click", function(e){
+				// first make sure its active
 				if (!marker.nonActive) {
+					// bring the marker up to the front
 					marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
 
 					if (App.map.tooltip.currentMarker != marker) {
@@ -59,6 +67,7 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 					}
 				}
 			});
+
 			that.markers.push(marker);
 		}
 	});
@@ -66,6 +75,7 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 
 	that.selectedStreets = [];
 
+	// if a street is selected, either toggle its markers
 	var sub = events.subscribe('collisions/street_selected', function(data) {
 		// toggle whether or not the street is selected
 		if (that.selectedStreets.indexOf(data.street) == -1) {
@@ -74,6 +84,9 @@ App.Views.collisionsAndSpeed.mapInit = function() {
 			that.selectedStreets.splice( that.selectedStreets.indexOf(data.street), 1 );
 		}
 
+		// for each marker, check if it is on this street
+		// if it is, set it to active
+		// if not, set it to inactive
 		that.markers.forEach(function(marker) {
 			// had th's and nd's, which the street data doesn't have :(
 			if (that.stripNumberSuffix(marker.streetName).indexOf(data.street) != -1) {
@@ -115,6 +128,8 @@ App.Views.collisionsAndSpeed.stripNumberSuffix = function(streetName) {
 	return newStreetNumber;
 }
 
+// used by the markers to get the speed data for their street
+// takes the street in the format the markers have and turns it into the format the street data has
 App.Views.collisionsAndSpeed.stripAddress = function(address) {
 	// even for intersections just grab the very first street for now
 	var street = address.split(",")[0];
@@ -193,6 +208,7 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 			opacity: 0
 		});
 
+	// draw the chart itself
 	var myChart = d3.select('#collision-and-speed-chart')
 		.style('width', "100%")
 		.attr('height', height + margin.top + margin.bottom)
@@ -254,6 +270,8 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 		})
 		.duration(1000)
 		.ease('elastic');
+
+	// draw the axes
 
 	var vGuideScale = d3.scale.linear()
 		.domain([0, 40])
