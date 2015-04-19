@@ -2,6 +2,8 @@ App.Views.crimeOverTime = Object.create(App.BaseView);
 
 App.Views.crimeOverTime.markers = [];
 
+//global variable to keep what month is being highlighted
+//I could only get the crime type from using mouseover and the month from using mousemove
 var month;
 
 App.Views.crimeOverTime.mapInit = function() {
