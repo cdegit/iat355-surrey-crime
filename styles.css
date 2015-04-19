@@ -68,6 +68,7 @@ header .author-section {
 #legendCheck
 {
 	padding-left: 5em;
+	display: none;
 }
 
 #graphToolTip

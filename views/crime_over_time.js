@@ -2,9 +2,9 @@ App.Views.crimeOverTime = Object.create(App.BaseView);
 
 App.Views.crimeOverTime.markers = [];
 
-//global variable to keep what month is being highlighted
+//global variable to keep what month and crimeIndex is being highlighted
 //I could only get the crime type from using mouseover and the month from using mousemove
-var month;
+var month = "January", crimeIndex = 0;
 
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
@@ -419,24 +419,16 @@ App.Views.crimeOverTime.chartInit = function() {
 			$(this).find("[data-month]").each(function(i, tick) {
 				// check if the mouse is within the bounding rect for this tick
 				// if so, move the marker to this tick
+				findMonthAndCrimeAmount(i);
 				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right) {
 					// position the marker over the line for this tick
 					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
 					d3.select("#month-selection").style( "display", "block" );
 
-					month = findMonth(i);
-
 					return false;
 				}
 			});
 		});
-
-		chart.selectAll("polyline")
-    	.data(data)
-		.on("mouseover", showGraphToolTip);
-
-		
-
 
 		d3.select("#chart").on("click", function() {
 			hideGraphToolTip();
@@ -457,6 +449,10 @@ App.Views.crimeOverTime.chartInit = function() {
 				}
 			});
 		});
+
+		chart.selectAll("polyline")
+    	.data(data)
+		.on("mouseover", showGraphToolTip);
 	}
 
 	//show tool tip on hover
@@ -467,7 +463,8 @@ App.Views.crimeOverTime.chartInit = function() {
 			d3.select("#graphToolTip")
 		    .html("<b>Details</b><hr/>"+
 		          "<b>Crime Type</b>: " + d["type"] +
-		          "<br/><b>Amount</b>: " + month
+		          "<br/><b>Month</b>: " + month +
+		          "<br/><b>Crime Occurrence</b>: " + d["points"][crimeIndex]
 		    )
 		    .style({
 		        "display": "block",
@@ -485,47 +482,60 @@ App.Views.crimeOverTime.chartInit = function() {
 	}
 
 	//find the month that is being highlighted
-	function findMonth(i)
+	function findMonthAndCrimeAmount(i)
 	{
 		switch(i) {
 		    case 0:
-		        return "January";
+		        month = "January";
+		        crimeIndex = 0;
 		        break;
 		    case 1:
-		        return "February";
+		        month = "February";
+		        crimeIndex = 1;
 		        break;
 		    case 2:
-		        return "March";
+		        month = "March";
+		        crimeIndex = 2;
 		        break;
 		    case 3:
-		        return "April";
+		        month = "April";
+		        crimeIndex = 3;
 		        break;
 		    case 4:
-		        return "May";
+		        month = "May";
+		        crimeIndex = 4;
 		        break;
 		    case 5:
-		        return "June";
+		        month = "June";
+		        crimeIndex = 5;
 		        break;
 		    case 6:
-		        return "July";
+		        month = "July";
+		        crimeIndex = 6;
 		        break;
 		    case 7:
-		        return "August";
+		        month = "August";
+		        crimeIndex = 7;
 		        break;
 		    case 8:
-		        return "September";
+		        month = "September";
+		        crimeIndex = 8;
 		        break;
 		    case 9:
-		        return "October";
+		        month = "October";
+		        crimeIndex = 9;
 		        break;
 		    case 10:
-		        return "November";
+		        month = "November";
+		        crimeIndex = 10;
 		        break;
 		    case 11:
-		        return "December";
+		        month = "December";
+		        crimeIndex = 11;
 		        break;
 		    default:
-		        return "January";
+		        month = "January";
+		        crimeIndex = 0;
 		}
 	}
 
@@ -560,9 +570,16 @@ App.Views.crimeOverTime.chartInit = function() {
 
 App.Views.crimeOverTime.chartRender = function() {
 	d3.select("#crime-chart").style("display", "block");
+	d3.select("#legendCheck")
+	.style({
+        "display": "block"
+    })
+
 };
 
 App.Views.crimeOverTime.chartClose = function() {
 	d3.select("#crime-chart").style("display", "none");
 	d3.select("#month-selection").style( "display", "none" );
+	d3.select("#legendCheck").style({ "display": "none" });
+    d3.select("#graphToolTip").style("display", "none")
 };
