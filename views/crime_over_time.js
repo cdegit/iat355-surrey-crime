@@ -203,27 +203,27 @@ App.Views.crimeOverTime.chartInit = function() {
 			opacity: 0
 		});
 
-	var chart2014 = d3.select('#crime-chart')
+	var chart2013 = d3.select('#crime-chart')
 		.style('width', "100%")
 		.attr('height', height + margin.top + margin.bottom)
 		.append('g')
-		.attr("id", "crime-over-time-2014");
+		.attr("id", "crime-over-time-2013");
 
-	var chart2013 = d3.select('#crime-chart')
+	var chart2014 = d3.select('#crime-chart')
 		.append('g')
-		.attr("id", "crime-over-time-2013")
+		.attr("id", "crime-over-time-2014")
 		.attr('transform', 'translate('+ 350 +', '+ 0 +')');
 
-	setupChart(chart2014, crime2014LineData, 2014);
 	setupChart(chart2013, crime2013LineData, 2013);
+	setupChart(chart2014, crime2014LineData, 2014);
 
 	//checkboxes
 	d3.selectAll("#legendCheck input[type=checkbox]")
 		.on("change", function(){
 		    crimeVisible[this.value] = this.checked;
+		    updateChart(chart2013, crime2013LineData);
 		    updateChart(chart2014, crime2014LineData);
-			updateChart(chart2013, crime2013LineData);
-
+			
 			events.publish('crime/crime_filtered', {
 				type: this.value,
 				visible: this.checked
