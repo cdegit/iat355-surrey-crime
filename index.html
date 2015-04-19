@@ -28,10 +28,22 @@
             <div id="resize-handle" draggable="true"></div>
             <div id="chart">
                 <svg id="crime-chart"></svg>
+                
+                <div id="legendCheck">
+                    <input type="checkbox" name="theftFromCar" value="Theft from Motor Vehicle" checked>Theft from Motor Vehicle</input><br/>
+                    <input type="checkbox" name="theftOfCar" value="Theft of Motor Vehicle" checked>Theft of Motor Vehicle</input><br/>
+                    <input type="checkbox" name="collision" value="Fatal/Injury Collision" checked>Fatal/Injury Collision</input><br/>
+                    <input type="checkbox" name="shoplifting" value="Shoplifting" checked>Shoplifting</input><br/>
+                    <input type="checkbox" name="beBusiness" value="Break and Enter - Business" checked>Break and Enter - Business</input><br/>
+                    <input type="checkbox" name="beResidence" value="Break and Enter - Residence" checked>Break and Enter - Residence</input>
+                </div>
                 <svg id="collision-and-speed-chart"></svg>
                 <div id="month-selection"></div>
+                
+                <div id="tooltip"></div>
             </div>
         </div>
+
 
         <script type="text/javascript" src="data/crime.json"></script>
         <script type="text/javascript" src="data/crime_summary.json"></script>

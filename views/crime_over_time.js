@@ -156,8 +156,15 @@ App.Views.crimeOverTime.chartInit = function() {
 		}
 	}
 
-	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+	//filter booleans
+	var bTheftFromCar = true;
+	var bTheftOfCar = true;
+	var bCollision = true;
+	var bShoplifting = true;
+	var bBeBusiness = true;
+	var bBeResidence = true;
 
+	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
 	var margin = {top:30, right:30, bottom:50, left:80};
 
@@ -196,7 +203,54 @@ App.Views.crimeOverTime.chartInit = function() {
 	setupChart(chart2014, crime2014LineData, 2014);
 	setupChart(chart2013, crime2013LineData, 2013);
 
+	//checkboxes
+	d3.select("[name=theftFromCar]")
+	.on("change", function(){
+	    bTheftFromCar = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013);
+	})
+
+	d3.select("[name=theftOfCar]")
+	.on("change", function(){
+	    bTheftOfCar = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013)
+	})
+
+	d3.select("[name=collision]")
+	.on("change", function(){
+	    bCollision = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013)
+	})
+
+	d3.select("[name=shoplifting]")
+	.on("change", function(){
+	    bShoplifting = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013)
+	})
+
+	d3.select("[name=beBusiness]")
+	.on("change", function(){
+	    bBeBusiness = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013)
+	})
+
+	d3.select("[name=beResidence]")
+	.on("change", function(){
+	    bBeResidence = this.checked
+	    setupChart(chart2014, crime2014LineData, 2014);
+		setupChart(chart2013, crime2013LineData, 2013)
+	})
+
 	function setupChart(chart, data, year) {
+
+		chart.selectAll("polyline")
+    		.remove()
+
 		chart
 			.append('g')
 				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
@@ -220,6 +274,76 @@ App.Views.crimeOverTime.chartInit = function() {
 					},
 					opacity: 1
 				});
+
+		//filters
+		chart.selectAll("polyline")
+		    .data(data)
+		    .filter(function(d, i){
+		        if(d["type"] == "Theft from Motor Vehicle" && !bTheftFromCar ||
+		         d["type"] == "Theft of Motor Vehicle" && !bTheftOfCar ||
+		         d["type"] == "Fatal/Injury Collision" && !bCollision ||
+		         d["type"] == "Shoplifting" && !bShoplifting ||
+		         d["type"] == "Break and Enter - Business" && !bBeBusiness ||
+		         d["type"] == "Break and Enter - Residence" && !bBeResidence)
+		        	return true;
+		        else
+		        	return false;
+		    })
+		    .attr({
+		        opacity: 0
+		    })
+
+		//legend circles
+		var svg = d3.select("svg");
+	    var legend = svg.append("g")
+
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 45,
+	        r: 5,
+	        fill: "rgb(255, 127, 0)"
+	    })
+	    
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 65,
+	        r: 5,
+	        fill: "rgb(255, 255, 51)"
+	    })	
+	    
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 85,
+	        r: 5,
+	        fill: "rgb(77, 175, 74)"
+	    })
+
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 105,
+	        r: 5,
+	        fill: "rgb(152, 78, 163)"
+	    })
+
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 125,
+	        r: 5,
+	        fill: "rgb(228, 26, 28)"
+	    })
+
+	    legend.append("circle")
+	    .attr({
+	        cx: 750,
+	        cy: 145,
+	        r: 5,
+	        fill: "rgb(55, 126, 184)"
+	    })
 
 		var vGuideScale = d3.scale.linear()
 			.domain([0, 30])
@@ -298,6 +422,8 @@ App.Views.crimeOverTime.chartInit = function() {
 				}
 			});
 		});
+
+
 
 		d3.select("#chart").on("click", function() {
 			// for whatever reason have to listen on this element
