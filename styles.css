@@ -77,20 +77,6 @@ header .author-section {
 	display: none;
 }
 
-#graphToolTip
-{
-    position: absolute;
-    display: none;
-    background: lightblue;
-    opacity: .9;
-    padding: 4px 12px;
-    box-shadow: 10px 10px 5px #888888;
-    border: 2px solid;
-    border-radius: 5px;
-    font-family: Helvetica, sans-serif;
-    font-size: 12px;
-}
-
 #legendCheck
 {
 	padding-left: 4em;
@@ -140,4 +126,53 @@ header .author-section {
 
 .legend-entry label[for="legend-beResidence"]:before {
 	background-color: rgb(55, 126, 184);
+}
+
+#graphToolTip
+{
+    position: absolute;
+    display: none;
+    background: #ffffff;
+    padding: 4px 12px;
+    border: 1px solid;
+    border-radius: 2px;
+    width: 270px;
+    box-sizing: border-box;
+    /* transforming based on percentages was causing blurry text, so explicitly set */
+	transform: translate(-135px, 18px);
+}
+
+#graphToolTip h2 {
+	font-size: 18px;
+	margin: 5px 0 0 0;
+}
+
+#graphToolTip th {
+	text-align: left;
+	font-size: 14px;
+}
+
+#graphToolTip .tooltip-entry {
+	font-size: 12px;
+}
+
+#graphToolTip .tooltip-data {
+	text-align: right;
+}
+
+
+#graphToolTip::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: -15px;
+	left: calc(50% - 8px);
+	
+	width: 0; 
+	height: 0; 
+
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	
+	border-bottom: 15px solid black;
 }

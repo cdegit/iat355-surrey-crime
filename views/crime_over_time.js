@@ -131,11 +131,11 @@ App.Views.crimeOverTime.chartInit = function() {
 
 	var crimeLineData = [
 		{
-			type: "Break and Enter - Business",
+			type: "Theft from Motor Vehicle",
 			points: [] // one point for each month, in order
 		},
 		{
-			type: "Break and Enter - Residence",
+			type: "Theft of Motor Vehicle",
 			points: [] 
 		},
 		{
@@ -147,11 +147,11 @@ App.Views.crimeOverTime.chartInit = function() {
 			points: [] 
 		},
 		{
-			type: "Theft from Motor Vehicle",
-			points: [] 
+			type: "Break and Enter - Business",
+			points: []
 		},
 		{
-			type: "Theft of Motor Vehicle",
+			type: "Break and Enter - Residence",
 			points: [] 
 		},
 	];
@@ -330,20 +330,19 @@ App.Views.crimeOverTime.chartInit = function() {
 				// check if the mouse is within the bounding rect for this tick
 				// if so, move the marker to this tick
 				findMonthAndCrimeAmount(i);
-				showGraphToolTip(data);
+				
+
 				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right) {
 					// position the marker over the line for this tick
 					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
 					d3.select("#month-selection").style( "display", "block" );
 
+					showGraphToolTip(data, year, $(tick).find("line").position().left, tick.getBoundingClientRect().bottom);
+
 					return false;
 				}
 			});
 		});
-
-/*		chart.selectAll("polyline")
-    	.data(data)
-		.on("mouseover", showGraphToolTip);*/
 
 		d3.select("#chart").on("click", function() {
 			hideGraphToolTip();
@@ -364,10 +363,6 @@ App.Views.crimeOverTime.chartInit = function() {
 				}
 			});
 		});
-
-/*		chart.selectAll("polyline")
-    	.data(data)
-		.on("mouseover", showGraphToolTip);*/
 	}
 
 	function updateChart(chart, data) {
@@ -384,27 +379,25 @@ App.Views.crimeOverTime.chartInit = function() {
 	}
 
 	//show tool tip on hover
-	function showGraphToolTip(d)
+	function showGraphToolTip(d, year, xPos, yPos)
 	{
-		d3.select("#graphToolTip")
-	    .html("<b>" + month + "</b><hr/>"+
-	          "<b>Crime Type</b>: " + d[0]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[0]["points"][crimeIndex] + "<br/><br/>" +
-	          "<b>Crime Type</b>: " + d[1]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[1]["points"][crimeIndex] + "<br/><br/>" +
-	          "<b>Crime Type</b>: " + d[2]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[2]["points"][crimeIndex] + "<br/><br/>" +
-	          "<b>Crime Type</b>: " + d[3]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[3]["points"][crimeIndex] + "<br/><br/>" +
-	          "<b>Crime Type</b>: " + d[4]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[4]["points"][crimeIndex] + "<br/><br/>" +
-	          "<b>Crime Type</b>: " + d[5]["type"] +
-	          "<br/><b>Crime Occurrence</b>: " + d[5]["points"][crimeIndex]
-	    )
-	    .style({
+		var x = xPos || d3.event.pageX;
+		var y = yPos || d3.event.pageY;
+
+		var tooltip = d3.select("#graphToolTip");
+
+		tooltip.select("h2").text(month + ", " + year);
+
+		// for each data entry in the table, fill it with the appropriate data
+		tooltip.selectAll(".tooltip-entry").each(function(data, i) {
+			d3.select(this).select(".tooltip-type").text( d[i]["type"] );
+			d3.select(this).select(".tooltip-data").text( d[i]["points"][crimeIndex] );
+		});
+
+	    tooltip.style({
 	        "display": "block",
-	        "left": d3.event.pageX + "px",
-	        "top": d3.event.pageY + "px"
+	        "left": x + "px",
+	        "top": y + "px"
 	    })
 	}
 
