@@ -2,10 +2,6 @@ App.Views.crimeOverTime = Object.create(App.BaseView);
 
 App.Views.crimeOverTime.markers = [];
 
-//global variable to keep what month and crimeIndex is being highlighted
-//I could only get the crime type from using mouseover and the month from using mousemove
-var months = "January", crimeIndex = 0;
-
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
 	crimeData.forEach(function(crime, index) {
@@ -234,6 +230,8 @@ App.Views.crimeOverTime.chartInit = function() {
 			});
 		});
 
+	d3.select("#graphToolTipClose").on("click", hideGraphToolTip);
+
 	function setupChart(chart, data, year) {
 		chart
 			.append('g')
@@ -257,6 +255,23 @@ App.Views.crimeOverTime.chartInit = function() {
 						return points;
 					},
 					opacity: 1
+				});
+
+		var monthBars = chart
+			.append('g')
+				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
+				.selectAll('rect')
+				.data(months)
+				.enter()
+				.append('rect')
+				.attr({
+					class: "month-bar",
+					x: function(d, i) {
+						return xScale(i) - 4;
+					},
+					y: 0,
+					width: 9,
+					height: 120	
 				});
 
 		var vGuideScale = d3.scale.linear()
@@ -325,40 +340,44 @@ App.Views.crimeOverTime.chartInit = function() {
 		
 
 		// add events to chart
+
+		// when the mouse moves this chart, we want to highlight the month the mouse is currently over
 		chart.on("mousemove", function(d,i) {
-			$(this).find("[data-month]").each(function(i, tick) {
+			$(this).find("[data-month]").each(function(monthIndex, tick) {
 				// check if the mouse is within the bounding rect for this tick
 				// if so, move the marker to this tick
-				findMonthAndCrimeAmount(i);
 				
-
 				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right) {
 					// position the marker over the line for this tick
 					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
 					d3.select("#month-selection").style( "display", "block" );
 
-					showGraphToolTip(data, year, $(tick).find("line").position().left, tick.getBoundingClientRect().bottom);
+					// show the tooltip for this month
+					showGraphToolTip(data, monthIndex, year, $(tick).find("line").position().left, tick.getBoundingClientRect().bottom);
 
+					// break out of the loop - don't need to check any other months
 					return false;
 				}
 			});
 		});
 
-		d3.select("#chart").on("click", function() {
-			hideGraphToolTip();
-			// for whatever reason have to listen on this element
-			// listening on anything lower down just doesn't work
-			// event doesn't seem to bubble up? 
-
+		// on click, we want to select this month
+		chart.on("click", function() {
 			$(this).find("[data-month]").each(function(i, tick) {
 				// check if the mouse is within the bounding rect for this tick
 				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right && d3.event.pageY <= tick.getBoundingClientRect().bottom) {
 					// select this month
 					events.publish('crime/month_selected', {
-						month: $(tick).data("month"),
+						month: months[i],
 						year: year
 					});
 
+					// select the bar for this month
+					// and display it if the month is selected
+					chart.select(".month-bar:nth-child(" + (i + 1) + ")")
+						.classed("month-bar-selected", that.selectedMonths.indexOf(months[i] + year) != -1);
+
+					// break out of the loop - don't need to check any other months
 					return false;
 				}
 			});
@@ -379,19 +398,19 @@ App.Views.crimeOverTime.chartInit = function() {
 	}
 
 	//show tool tip on hover
-	function showGraphToolTip(d, year, xPos, yPos)
+	function showGraphToolTip(d, monthIndex, year, xPos, yPos)
 	{
 		var x = xPos || d3.event.pageX;
 		var y = yPos || d3.event.pageY;
 
 		var tooltip = d3.select("#graphToolTip");
 
-		tooltip.select("h2").text(month + ", " + year);
+		tooltip.select("h2").text(getMonthLongName(monthIndex) + ", " + year);
 
 		// for each data entry in the table, fill it with the appropriate data
 		tooltip.selectAll(".tooltip-entry").each(function(data, i) {
 			d3.select(this).select(".tooltip-type").text( d[i]["type"] );
-			d3.select(this).select(".tooltip-data").text( d[i]["points"][crimeIndex] );
+			d3.select(this).select(".tooltip-data").text( d[i]["points"][monthIndex] );
 		});
 
 	    tooltip.style({
@@ -409,11 +428,10 @@ App.Views.crimeOverTime.chartInit = function() {
 	}
 
 	//find the month that is being highlighted
-	function findMonthAndCrimeAmount(i)
+	function getMonthLongName(i)
 	{
 		longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		month = longMonths[i];
-		crimeIndex = i;
+		return longMonths[i];
 	}
 };
 

@@ -54,6 +54,17 @@ header .author-section {
 	display: none;
 }
 
+.month-bar {
+	fill: rgba(100, 100, 100, 0.15);
+	opacity: 0;
+}
+
+.month-bar.month-bar-selected {
+	stroke: black;
+	stroke-width: 1;
+	opacity: 1;
+}
+
 #month-selection {
 	background: rgba(100, 100, 100, 0.15);
 	width: 9;
@@ -175,4 +186,10 @@ header .author-section {
 	border-right: 8px solid transparent;
 	
 	border-bottom: 15px solid black;
+}
+
+#graphToolTipClose {
+	position: absolute;
+	top: 5px;
+	right: 10px;
 }
