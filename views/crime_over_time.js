@@ -259,7 +259,7 @@ App.Views.crimeOverTime.chartInit = function() {
 
 		var monthBars = chart
 			.append('g')
-				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
+				.attr('transform', 'translate('+ 110 +', '+margin.top+')')
 				.selectAll('rect')
 				.data(months)
 				.enter()
