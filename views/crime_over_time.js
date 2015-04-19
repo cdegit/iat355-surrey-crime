@@ -2,6 +2,8 @@ App.Views.crimeOverTime = Object.create(App.BaseView);
 
 App.Views.crimeOverTime.markers = [];
 
+var month;
+
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
 	crimeData.forEach(function(crime, index) {
@@ -408,8 +410,10 @@ App.Views.crimeOverTime.chartInit = function() {
 			.attr('transform', 'translate('+ 220 +', '+margin.top+')')
 			.attr('text-anchor', 'middle');
 
+		
+
 		// add events to chart
-		chart.on("mousemove", function() {
+		chart.on("mousemove", function(d,i) {
 			$(this).find("[data-month]").each(function(i, tick) {
 				// check if the mouse is within the bounding rect for this tick
 				// if so, move the marker to this tick
@@ -418,14 +422,22 @@ App.Views.crimeOverTime.chartInit = function() {
 					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
 					d3.select("#month-selection").style( "display", "block" );
 
+					month = findMonth(i);
+
 					return false;
 				}
 			});
 		});
 
+		chart.selectAll("polyline")
+    	.data(data)
+		.on("mouseover", showGraphToolTip);
+
+		
 
 
 		d3.select("#chart").on("click", function() {
+			hideGraphToolTip();
 			// for whatever reason have to listen on this element
 			// listening on anything lower down just doesn't work
 			// event doesn't seem to bubble up? 
@@ -443,6 +455,103 @@ App.Views.crimeOverTime.chartInit = function() {
 				}
 			});
 		});
+	}
+
+	//show tool tip on hover
+	function showGraphToolTip(d)
+	{
+		if(checkVisible(d))
+		{
+			d3.select("#graphToolTip")
+		    .html("<b>Details</b><hr/>"+
+		          "<b>Crime Type</b>: " + d["type"] +
+		          "<br/><b>Amount</b>: " + month
+		    )
+		    .style({
+		        "display": "block",
+		        "left": d3.event.pageX + "px",
+		        "top": d3.event.pageY + "px"
+		    })
+		}
+	}
+
+	//hide tool tip on click 
+	function hideGraphToolTip()
+	{
+		d3.select("#graphToolTip")
+    	.style("display", "none")
+	}
+
+	//find the month that is being highlighted
+	function findMonth(i)
+	{
+		switch(i) {
+		    case 0:
+		        return "January";
+		        break;
+		    case 1:
+		        return "February";
+		        break;
+		    case 2:
+		        return "March";
+		        break;
+		    case 3:
+		        return "April";
+		        break;
+		    case 4:
+		        return "May";
+		        break;
+		    case 5:
+		        return "June";
+		        break;
+		    case 6:
+		        return "July";
+		        break;
+		    case 7:
+		        return "August";
+		        break;
+		    case 8:
+		        return "September";
+		        break;
+		    case 9:
+		        return "October";
+		        break;
+		    case 10:
+		        return "November";
+		        break;
+		    case 11:
+		        return "December";
+		        break;
+		    default:
+		        return "January";
+		}
+	}
+
+	//check if the crime has been filtered out
+	function checkVisible(d)
+	{
+		switch(d["type"]) {
+		    case "Theft from Motor Vehicle":
+		        return bTheftFromCar;
+		        break;
+		    case "Theft of Motor Vehicle":
+		        return bTheftOfCar;
+		        break;
+		    case "Fatal/Injury Collision":
+		        return bCollision;
+		        break;
+		    case "Shoplifting":
+		        return bShoplifting;
+		        break;
+		    case "Break and Enter - Business":
+		        return bBeBusiness;
+		        break;
+		    case "Break and Enter - Residence":
+		        return bBeResidence;
+		        break;
+		    default:
+		        return true;
+		}
 	}
 };
 

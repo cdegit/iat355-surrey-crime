@@ -62,6 +62,7 @@ header .author-section {
 	position: absolute;
 	top: 122px;
 	display: none;
+	z-index: -1;
 }
 
 #legendCheck
@@ -69,3 +70,16 @@ header .author-section {
 	padding-left: 5em;
 }
 
+#graphToolTip
+{
+    position: absolute;
+    display: none;
+    background: lightblue;
+    opacity: .9;
+    padding: 4px 12px;
+    box-shadow: 10px 10px 5px #888888;
+    border: 2px solid;
+    border-radius: 5px;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+}
