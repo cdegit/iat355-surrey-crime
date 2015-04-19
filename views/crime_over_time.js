@@ -259,58 +259,6 @@ App.Views.crimeOverTime.chartInit = function() {
 					opacity: 1
 				});
 
-		//legend circles
-		var svg = d3.select("svg");
-	    var legend = svg.append("g")
-
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 45,
-	        r: 5,
-	        fill: "rgb(255, 127, 0)"
-	    })
-	    
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 65,
-	        r: 5,
-	        fill: "rgb(153, 153, 153)"
-	    })	
-	    
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 85,
-	        r: 5,
-	        fill: "rgb(77, 175, 74)"
-	    })
-
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 105,
-	        r: 5,
-	        fill: "rgb(152, 78, 163)"
-	    })
-
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 125,
-	        r: 5,
-	        fill: "rgb(228, 26, 28)"
-	    })
-
-	    legend.append("circle")
-	    .attr({
-	        cx: 750,
-	        cy: 145,
-	        r: 5,
-	        fill: "rgb(55, 126, 184)"
-	    })
-
 		var vGuideScale = d3.scale.linear()
 			.domain([0, 30])
 			.range([height, 0]);
