@@ -269,7 +269,15 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 
 	vAxis(vGuide);
 
-	vGuide.attr('transform', 'translate('+margin.left+', '+margin.top+')');
+	vGuide.attr('transform', 'translate('+margin.left+', '+margin.top+')')
+		.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", height/-2)
+        .attr("y", -50)
+        .attr("dy", ".71em")
+        .style("text-anchor", "middle")
+        //.style("font-size","18px")
+        .text("Number of Collisions");
 
 	vGuide.selectAll('path')
 		.style({fill: 'none', stroke: "#000"});
@@ -285,6 +293,7 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 		.orient('bottom');
 
 	var hGuide = d3.select('#collision-and-speed-chart').append('g');
+		
 
 	hAxis(hGuide);
 	hGuide.attr('transform', 'translate('+margin.left+', '+(height+margin.top)+')');

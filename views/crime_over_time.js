@@ -180,7 +180,7 @@ App.Views.crimeOverTime.chartInit = function() {
 
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
-	var margin = {top:30, right:30, bottom:50, left:80};
+	var margin = {top:30, right:30, bottom:50, left:100};
 
 	var height = 200 - margin.top - margin.bottom,
 		width = 400 - margin.left - margin.right,
@@ -235,7 +235,7 @@ App.Views.crimeOverTime.chartInit = function() {
 	function setupChart(chart, data, year) {
 		chart
 			.append('g')
-				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
+				.attr('transform', 'translate('+ 110 +', '+margin.top+')')
 				.selectAll('polyline')
 				.data(data)
 				.enter()
@@ -287,7 +287,15 @@ App.Views.crimeOverTime.chartInit = function() {
 
 		vAxis(vGuide);
 
-		vGuide.attr('transform', 'translate('+margin.left+', '+margin.top+')');
+		vGuide.attr('transform', 'translate('+margin.left+', '+margin.top+')')
+			.append("text")
+	        .attr("transform", "rotate(-90)")
+	        .attr("x", height/-2)
+	        .attr("y", -45)
+	        .attr("dy", ".71em")
+	        .style("text-anchor", "middle")
+	        .style("font-size","16px")
+	        .text("Number of Crimes");
 
 		vGuide.selectAll('path')
 			.style({fill: 'none', stroke: "#000"});
