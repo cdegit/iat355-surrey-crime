@@ -409,6 +409,7 @@ App.Views.crimeOverTime.chartInit = function() {
 
 		// for each data entry in the table, fill it with the appropriate data
 		tooltip.selectAll(".tooltip-entry").each(function(data, i) {
+			d3.select(this).style("color", that.utilities.crimeColors[d[i]["type"]] );
 			d3.select(this).select(".tooltip-type").text( d[i]["type"] );
 			d3.select(this).select(".tooltip-data").text( d[i]["points"][monthIndex] );
 		});
