@@ -65,12 +65,6 @@ header .author-section {
 	z-index: -1;
 }
 
-#legendCheck
-{
-	padding-left: 5em;
-	display: none;
-}
-
 #graphToolTip
 {
     position: absolute;
@@ -83,4 +77,42 @@ header .author-section {
     border-radius: 5px;
     font-family: Helvetica, sans-serif;
     font-size: 12px;
+}
+
+#legendCheck
+{
+	padding-left: 4em;
+}
+
+.legend-entry label:before {
+	content: "";
+	width: 20px;
+	height: 15px;
+	display: inline-block;
+	margin-right: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.legend-entry label[for="legend-theftFromCar"]:before {
+	background-color: rgb(255, 127, 0);
+}
+
+.legend-entry label[for="legend-theftOfCar"]:before {
+	background-color: rgb(255, 255, 51);
+}
+
+.legend-entry label[for="legend-collision"]:before {
+	background-color: rgb(77, 175, 74);
+}
+
+.legend-entry label[for="legend-shoplifting"]:before {
+	background-color: rgb(152, 78, 163);
+}
+
+.legend-entry label[for="legend-beBusiness"]:before {
+	background-color: rgb(228, 26, 28);
+}
+
+.legend-entry label[for="legend-beResidence"]:before {
+	background-color: rgb(55, 126, 184);
 }
