@@ -161,12 +161,14 @@ App.Views.crimeOverTime.chartInit = function() {
 	}
 
 	//filter booleans
-	var bTheftFromCar = true;
-	var bTheftOfCar = true;
-	var bCollision = true;
-	var bShoplifting = true;
-	var bBeBusiness = true;
-	var bBeResidence = true;
+	var crimeVisible = { 
+		"Break and Enter - Business": true,
+		"Break and Enter - Residence": true,
+		"Fatal/Injury Collision": true,
+		"Shoplifting": true,
+		"Theft from Motor Vehicle": true,
+		"Theft of Motor Vehicle": true
+	};
 
 	var months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -208,53 +210,14 @@ App.Views.crimeOverTime.chartInit = function() {
 	setupChart(chart2013, crime2013LineData, 2013);
 
 	//checkboxes
-	d3.select("[name=theftFromCar]")
-	.on("change", function(){
-	    bTheftFromCar = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013);
-	})
-
-	d3.select("[name=theftOfCar]")
-	.on("change", function(){
-	    bTheftOfCar = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013)
-	})
-
-	d3.select("[name=collision]")
-	.on("change", function(){
-	    bCollision = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013)
-	})
-
-	d3.select("[name=shoplifting]")
-	.on("change", function(){
-	    bShoplifting = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013)
-	})
-
-	d3.select("[name=beBusiness]")
-	.on("change", function(){
-	    bBeBusiness = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013)
-	})
-
-	d3.select("[name=beResidence]")
-	.on("change", function(){
-	    bBeResidence = this.checked
-	    setupChart(chart2014, crime2014LineData, 2014);
-		setupChart(chart2013, crime2013LineData, 2013)
-	})
+	d3.selectAll("#legendCheck input[type=checkbox]")
+		.on("change", function(){
+		    crimeVisible[this.value] = this.checked;
+		    updateChart(chart2014, crime2014LineData);
+			updateChart(chart2013, crime2013LineData);
+		});
 
 	function setupChart(chart, data, year) {
-
-		chart.selectAll("polyline")
-    		.remove()
-
 		chart
 			.append('g')
 				.attr('transform', 'translate('+ 90 +', '+margin.top+')')
@@ -278,24 +241,6 @@ App.Views.crimeOverTime.chartInit = function() {
 					},
 					opacity: 1
 				});
-
-		//filters
-		chart.selectAll("polyline")
-		    .data(data)
-		    .filter(function(d, i){
-		        if(d["type"] == "Theft from Motor Vehicle" && !bTheftFromCar ||
-		         d["type"] == "Theft of Motor Vehicle" && !bTheftOfCar ||
-		         d["type"] == "Fatal/Injury Collision" && !bCollision ||
-		         d["type"] == "Shoplifting" && !bShoplifting ||
-		         d["type"] == "Break and Enter - Business" && !bBeBusiness ||
-		         d["type"] == "Break and Enter - Residence" && !bBeResidence)
-		        	return true;
-		        else
-		        	return false;
-		    })
-		    .attr({
-		        opacity: 0
-		    })
 
 		//legend circles
 		var svg = d3.select("svg");
@@ -430,6 +375,10 @@ App.Views.crimeOverTime.chartInit = function() {
 			});
 		});
 
+		chart.selectAll("polyline")
+    	.data(data)
+		.on("mouseover", showGraphToolTip);
+
 		d3.select("#chart").on("click", function() {
 			hideGraphToolTip();
 			// for whatever reason have to listen on this element
@@ -453,6 +402,19 @@ App.Views.crimeOverTime.chartInit = function() {
 		chart.selectAll("polyline")
     	.data(data)
 		.on("mouseover", showGraphToolTip);
+	}
+
+	function updateChart(chart, data) {
+		//filters
+		chart.selectAll("polyline")
+		    .data(data)
+		    .attr("opacity", function(d, i){
+		    	if( crimeVisible[d["type"]] ) {
+		        	return 1;
+		        } else {
+		        	return 0;
+		        }
+		    });
 	}
 
 	//show tool tip on hover
@@ -484,86 +446,14 @@ App.Views.crimeOverTime.chartInit = function() {
 	//find the month that is being highlighted
 	function findMonthAndCrimeAmount(i)
 	{
-		switch(i) {
-		    case 0:
-		        month = "January";
-		        crimeIndex = 0;
-		        break;
-		    case 1:
-		        month = "February";
-		        crimeIndex = 1;
-		        break;
-		    case 2:
-		        month = "March";
-		        crimeIndex = 2;
-		        break;
-		    case 3:
-		        month = "April";
-		        crimeIndex = 3;
-		        break;
-		    case 4:
-		        month = "May";
-		        crimeIndex = 4;
-		        break;
-		    case 5:
-		        month = "June";
-		        crimeIndex = 5;
-		        break;
-		    case 6:
-		        month = "July";
-		        crimeIndex = 6;
-		        break;
-		    case 7:
-		        month = "August";
-		        crimeIndex = 7;
-		        break;
-		    case 8:
-		        month = "September";
-		        crimeIndex = 8;
-		        break;
-		    case 9:
-		        month = "October";
-		        crimeIndex = 9;
-		        break;
-		    case 10:
-		        month = "November";
-		        crimeIndex = 10;
-		        break;
-		    case 11:
-		        month = "December";
-		        crimeIndex = 11;
-		        break;
-		    default:
-		        month = "January";
-		        crimeIndex = 0;
-		}
+		var longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		return longMonths[i];
 	}
 
 	//check if the crime has been filtered out
 	function checkVisible(d)
 	{
-		switch(d["type"]) {
-		    case "Theft from Motor Vehicle":
-		        return bTheftFromCar;
-		        break;
-		    case "Theft of Motor Vehicle":
-		        return bTheftOfCar;
-		        break;
-		    case "Fatal/Injury Collision":
-		        return bCollision;
-		        break;
-		    case "Shoplifting":
-		        return bShoplifting;
-		        break;
-		    case "Break and Enter - Business":
-		        return bBeBusiness;
-		        break;
-		    case "Break and Enter - Residence":
-		        return bBeResidence;
-		        break;
-		    default:
-		        return true;
-		}
+		return crimeVisible[ d["type"] ];
 	}
 };
 
