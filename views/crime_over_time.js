@@ -4,7 +4,7 @@ App.Views.crimeOverTime.markers = [];
 
 //global variable to keep what month and crimeIndex is being highlighted
 //I could only get the crime type from using mouseover and the month from using mousemove
-var month = "January", crimeIndex = 0;
+var months = "January", crimeIndex = 0;
 
 App.Views.crimeOverTime.mapInit = function() {
 	var that = this;
@@ -365,6 +365,7 @@ App.Views.crimeOverTime.chartInit = function() {
 				// check if the mouse is within the bounding rect for this tick
 				// if so, move the marker to this tick
 				findMonthAndCrimeAmount(i);
+				showGraphToolTip(data);
 				if (d3.event.pageX >= tick.getBoundingClientRect().left && d3.event.pageX <= tick.getBoundingClientRect().right) {
 					// position the marker over the line for this tick
 					d3.select("#month-selection").style( "left", $(tick).find("line").position().left );
@@ -375,9 +376,9 @@ App.Views.crimeOverTime.chartInit = function() {
 			});
 		});
 
-		chart.selectAll("polyline")
+/*		chart.selectAll("polyline")
     	.data(data)
-		.on("mouseover", showGraphToolTip);
+		.on("mouseover", showGraphToolTip);*/
 
 		d3.select("#chart").on("click", function() {
 			hideGraphToolTip();
@@ -399,9 +400,9 @@ App.Views.crimeOverTime.chartInit = function() {
 			});
 		});
 
-		chart.selectAll("polyline")
+/*		chart.selectAll("polyline")
     	.data(data)
-		.on("mouseover", showGraphToolTip);
+		.on("mouseover", showGraphToolTip);*/
 	}
 
 	function updateChart(chart, data) {
@@ -420,20 +421,26 @@ App.Views.crimeOverTime.chartInit = function() {
 	//show tool tip on hover
 	function showGraphToolTip(d)
 	{
-		if(checkVisible(d))
-		{
-			d3.select("#graphToolTip")
-		    .html("<b>Details</b><hr/>"+
-		          "<b>Crime Type</b>: " + d["type"] +
-		          "<br/><b>Month</b>: " + month +
-		          "<br/><b>Crime Occurrence</b>: " + d["points"][crimeIndex]
-		    )
-		    .style({
-		        "display": "block",
-		        "left": d3.event.pageX + "px",
-		        "top": d3.event.pageY + "px"
-		    })
-		}
+		d3.select("#graphToolTip")
+	    .html("<b>" + month + "</b><hr/>"+
+	          "<b>Crime Type</b>: " + d[0]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[0]["points"][crimeIndex] + "<br/><br/>" +
+	          "<b>Crime Type</b>: " + d[1]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[1]["points"][crimeIndex] + "<br/><br/>" +
+	          "<b>Crime Type</b>: " + d[2]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[2]["points"][crimeIndex] + "<br/><br/>" +
+	          "<b>Crime Type</b>: " + d[3]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[3]["points"][crimeIndex] + "<br/><br/>" +
+	          "<b>Crime Type</b>: " + d[4]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[4]["points"][crimeIndex] + "<br/><br/>" +
+	          "<b>Crime Type</b>: " + d[5]["type"] +
+	          "<br/><b>Crime Occurrence</b>: " + d[5]["points"][crimeIndex]
+	    )
+	    .style({
+	        "display": "block",
+	        "left": d3.event.pageX + "px",
+	        "top": d3.event.pageY + "px"
+	    })
 	}
 
 	//hide tool tip on click 
@@ -446,14 +453,9 @@ App.Views.crimeOverTime.chartInit = function() {
 	//find the month that is being highlighted
 	function findMonthAndCrimeAmount(i)
 	{
-		var longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		return longMonths[i];
-	}
-
-	//check if the crime has been filtered out
-	function checkVisible(d)
-	{
-		return crimeVisible[ d["type"] ];
+		longMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		month = longMonths[i];
+		crimeIndex = i;
 	}
 };
 
