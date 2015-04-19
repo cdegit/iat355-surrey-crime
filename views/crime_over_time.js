@@ -276,7 +276,7 @@ App.Views.crimeOverTime.chartInit = function() {
 	        cx: 750,
 	        cy: 65,
 	        r: 5,
-	        fill: "rgb(255, 255, 51)"
+	        fill: "rgb(153, 153, 153)"
 	    })	
 	    
 	    legend.append("circle")

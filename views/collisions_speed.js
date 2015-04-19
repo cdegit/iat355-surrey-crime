@@ -173,8 +173,6 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 		barWidth = 50,
 		barOffset = 5;
 
-	var tempColor;
-
 	var yScale = d3.scale.linear()
 				.domain([0, 40])
 				.range([0, height]);
@@ -215,15 +213,12 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 						.style('left', (d3.event.pageX - 35) + 'px')
 						.style('top', (d3.event.pageY - 35) + 'px');
 
-					tempColor = this.style.fill;
 					d3.select(this)
-						.style('opacity', 0.5)
-						.style('fill', 'yellow');
+						.style('opacity', 0.8);
 				})
 				.on('mouseout', function(d){
 					d3.select(this)
-						.style('opacity', 1)
-						.style('fill', tempColor);
+						.style('opacity', 1);
 
 					toolTip.transition()
 						.style('opacity', 0);
@@ -236,6 +231,9 @@ App.Views.collisionsAndSpeed.chartInit = function() {
 					events.publish('collisions/street_selected', { 
 						street: d.streetName
 					});
+
+					d3.select(this)
+						.classed("street-selected", that.selectedStreets.indexOf(d.streetName) != -1);
 				});
 
 	myChart.transition()

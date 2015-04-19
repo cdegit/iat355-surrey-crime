@@ -47,7 +47,7 @@ App.BaseView = {
 			"Fatal/Injury Collision": "rgb(77, 175, 74)",
 			"Shoplifting": "rgb(152, 78, 163)",
 			"Theft from Motor Vehicle": "rgb(255, 127, 0)",
-			"Theft of Motor Vehicle": "rgb(255, 255, 51)"
+			"Theft of Motor Vehicle": "rgb(153, 153, 153)"
 		},
 		showMapTooltip: function(marker, contentCallback) {
 			// generate tooltip content

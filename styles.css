@@ -65,6 +65,12 @@ header .author-section {
 	z-index: -1;
 }
 
+.street-selected {
+	stroke: black;
+	stroke-width: 2;
+	opacity: 1;
+}
+
 #legendCheck
 {
 	padding-left: 5em;
