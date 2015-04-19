@@ -97,6 +97,18 @@ App.Views.crimeOverTime.mapInit = function() {
 			});
 		}
 	});
+
+	events.subscribe('crime/crime_filtered', function(data) {
+		that.markers.forEach(function(marker) {
+			if (marker.type == data.type) {
+				if (data.visible) {
+					marker.setMap(App.map);
+				} else {
+					marker.setMap(null);
+				}
+			}
+		});
+	});
 };
 
 App.Views.crimeOverTime.mapRender = function() {
@@ -215,6 +227,11 @@ App.Views.crimeOverTime.chartInit = function() {
 		    crimeVisible[this.value] = this.checked;
 		    updateChart(chart2014, crime2014LineData);
 			updateChart(chart2013, crime2013LineData);
+
+			events.publish('crime/crime_filtered', {
+				type: this.value,
+				visible: this.checked
+			});
 		});
 
 	function setupChart(chart, data, year) {
